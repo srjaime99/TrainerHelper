@@ -1,5 +1,5 @@
 package com.example.trainerhelper;
-
+// Jaime y Manuel
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
