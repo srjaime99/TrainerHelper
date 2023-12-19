@@ -1,0 +1,25 @@
+<!-- Diseño para la actividad del menú principal -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/btnAnadirActividad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir Actividad" />
+
+    <Button
+        android:id="@+id/btnCrearSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear Sesión" />
+
+    <Button
+        android:id="@+id/btnVerActividades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver Actividades" />
+</LinearLayout>

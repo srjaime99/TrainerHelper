@@ -21,6 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MenuActivity"></activity>
+
+        <activity android:name=".AñadirActividadActivity"></activity>
+
+        <activity android:name=".CrearSesionActivity"></activity>
+
+        <activity android:name=".VerActividadesActivity"></activity>
+
     </application>
 
 </manifest>
