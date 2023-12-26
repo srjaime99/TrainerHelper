@@ -1,3 +1,5 @@
+package com.example.trainerhelper;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 

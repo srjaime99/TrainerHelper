@@ -1,5 +1,6 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+package com.example.trainerhelper;
+
+import com.example.trainerhelper.Ejercicio;
 
 import java.util.LinkedList;
 import java.util.List;
