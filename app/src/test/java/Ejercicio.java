@@ -10,7 +10,7 @@ public class Ejercicio {
     private int minParticipantes;
     private int maxParticipantes;
 
-    // Constructor, getters y setters
+    // Constructor
 
     public Ejercicio(String deporte, String nombre, String descripcion, String materiales, int duracion, int minParticipantes, int maxParticipantes) {
         this.deporte = deporte;
