@@ -5,23 +5,19 @@ import org.json.JSONObject;
 
 public class Ejercicio {
     private String deporte;
-    private String nombre;
-    private String descripcion;
-    private String materiales;
+    private String nombreEjercicio;
     private int duracion;
-    private int minParticipantes;
-    private int maxParticipantes;
 
     // Constructor
 
-    public Ejercicio(String deporte, String nombre, String descripcion, String materiales, int duracion, int minParticipantes, int maxParticipantes) {
+    public Ejercicio(String deporte, String nombre, int duracion) {
         this.deporte = deporte;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.materiales = materiales;
+        this.nombreEjercicio = nombre;
         this.duracion = duracion;
-        this.minParticipantes = minParticipantes;
-        this.maxParticipantes = maxParticipantes;
+    }
+
+    public String enTexto(){
+        return ("Deporte: " + this.deporte + ", Nombre: " + this.nombreEjercicio + ", Duracion: " + this.duracion);
     }
 
     public JSONObject toJson() {
@@ -29,12 +25,8 @@ public class Ejercicio {
         JSONObject jsonEjercicio = new JSONObject();
         try {
             jsonEjercicio.put("deporte", deporte);
-            jsonEjercicio.put("nombre", nombre);
-            jsonEjercicio.put("descripcion", descripcion);
-            jsonEjercicio.put("materiales", materiales);
+            jsonEjercicio.put("nombre", nombreEjercicio);
             jsonEjercicio.put("duracion", duracion);
-            jsonEjercicio.put("minParticipantes", minParticipantes);
-            jsonEjercicio.put("maxParticipantes", maxParticipantes);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -46,13 +38,9 @@ public class Ejercicio {
         try {
             String deporte = jsonObject.getString("deporte");
             String nombre = jsonObject.getString("nombre");
-            String descripcion = jsonObject.getString("descripcion");
-            String materiales = jsonObject.getString("materiales");
             int duracion = jsonObject.getInt("duracion");
-            int minParticipantes = jsonObject.getInt("minParticipantes");
-            int maxParticipantes = jsonObject.getInt("maxParticipantes");
 
-            return new Ejercicio(deporte, nombre, descripcion, materiales, duracion, minParticipantes, maxParticipantes);
+            return new Ejercicio(deporte, nombre, duracion);
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -68,28 +56,12 @@ public class Ejercicio {
         this.deporte = deporte;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreEjercicio() {
+        return nombreEjercicio;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getMateriales() {
-        return materiales;
-    }
-
-    public void setMateriales(String materiales) {
-        this.materiales = materiales;
+    public void setNombreEjercicio(String nombreEjercicio) {
+        this.nombreEjercicio = nombreEjercicio;
     }
 
     public int getDuracion() {
@@ -100,19 +72,4 @@ public class Ejercicio {
         this.duracion = duracion;
     }
 
-    public int getMinParticipantes() {
-        return minParticipantes;
-    }
-
-    public void setMinParticipantes(int minParticipantes) {
-        this.minParticipantes = minParticipantes;
-    }
-
-    public int getMaxParticipantes() {
-        return maxParticipantes;
-    }
-
-    public void setMaxParticipantes(int maxParticipantes) {
-        this.maxParticipantes = maxParticipantes;
-    }
 }

@@ -1,0 +1,23 @@
+[
+    {
+      "deporte": "Fútbol",
+      "nombreEjercicio": "Calentamiento",
+      "duracion": 15
+    },
+    {
+      "deporte": "Fútbol",
+      "nombreEjercicio": "Ejercicio de pases",
+      "duracion": 20
+    },
+    {
+      "deporte": "Baloncesto",
+      "nombreEjercicio": "Estiramientos",
+      "duracion": 10
+    },
+    {
+      "deporte": "Baloncesto",
+      "nombreEjercicio": "Tiro al aro",
+      "duracion": 25
+    }
+  ]
+

@@ -1,5 +1,7 @@
 package com.example.trainerhelper;
 
+import static com.example.trainerhelper.ManejoEjercicios.leerJson;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
+import java.util.List;
+
 
 public class IncluirEjercicioActivity extends AppCompatActivity {
     TextView mensajeTextView;
@@ -42,7 +46,4 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
         String mensajeString = mensajeEditText.getText().toString();
         mensajeTextView.setText(mensajeString);
     }
-
-
-
 }
