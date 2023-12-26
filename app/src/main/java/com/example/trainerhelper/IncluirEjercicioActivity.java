@@ -5,18 +5,25 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class IncluirEjercicioActivity extends AppCompatActivity {
     TextView mensajeTextView;
     EditText mensajeEditText;
+    String[] prueba = {"Natacion", "Patines", "Yoga", "Tae kwondo"};
+    ArrayAdapter<String> adapterItems;
+    AutoCompleteTextView autoCompleteTxt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anadir_actividad);
         mensajeTextView = findViewById(R.id.DeporTetextView);
         mensajeTextView.setText("Hola Mundo");
+        autoCompleteTxt = findViewById(R.id.desplegable);
+        autoCompleteTxt.setAdapter(adapterItems);
 
         findViewById(R.id.btnVolver).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,4 +42,7 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
         String mensajeString = mensajeEditText.getText().toString();
         mensajeTextView.setText(mensajeString);
     }
+
+
+
 }
