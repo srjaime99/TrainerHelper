@@ -14,7 +14,7 @@ public class MenuActivity extends AppCompatActivity {
         findViewById(R.id.btnAnadirActividad).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, AñadirActividadActivity.class));
+                startActivity(new Intent(MenuActivity.this, IncluirEjercicioActivity.class));
             }
         });
 

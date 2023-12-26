@@ -24,7 +24,7 @@
 
         <activity android:name=".MenuActivity"></activity>
 
-        <activity android:name=".AñadirActividadActivity"></activity>
+        <activity android:name=".IncluirEjercicioActivity"></activity>
 
         <activity android:name=".CrearSesionActivity"></activity>
 
