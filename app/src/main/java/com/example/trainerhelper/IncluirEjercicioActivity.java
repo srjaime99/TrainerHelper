@@ -15,6 +15,7 @@ import java.util.List;
 
 
 public class IncluirEjercicioActivity extends AppCompatActivity {
+    //atributos
     TextView mensajeTextView;
     EditText mensajeEditText;
     String[] prueba = {"Natacion", "Patines", "Yoga", "Tae kwondo"};

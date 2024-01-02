@@ -11,70 +11,90 @@
 
     <Button
         android:id="@+id/btnVolver"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:text="Volver a Menú"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="<"
+        app:layout_constraintEnd_toStartOf="@id/incluir ejercicio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/DeporTetextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="96dp"
         android:text="TextView"
         android:textSize="24sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/acpetarButton"
-        android:layout_width="332dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:height="50dp"
-        android:onClick="buttonPress"
-        android:text="Aceptar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DeporTetextView" />
+        app:layout_constraintTop_toBottomOf="@+id/desplegable" />
 
     <EditText
         android:id="@+id/MensajeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="Introduce aquí..."
         android:inputType="text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/acpetarButton" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <Button
+        android:id="@+id/acpetarButton"
+        android:layout_width="332dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:height="50dp"
+        android:onClick="buttonPress"
+        android:text="Aceptar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DeporTetextView" />
+
+    <TextView
+        android:id="@+id/incluir ejercicio"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="25dp"
+        android:text="Añadir actividad"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/desplegable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MensajeEditText"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:hint="Deporte">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <AutoCompleteTextView
-            android:id="@+id/desplegable"
-            android:layout_width="317dp"
-            android:layout_height="62dp"
-            android:completionHint="Deporte"
-            android:inputType="none"
-            android:text="Deporte" />
+    <AutoCompleteTextView
+        android:id="@+id/desplegable"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="20dp"
+        android:inputType="none"
+        android:text="Deporte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/nombreEjercicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:height="48dp"
+        android:hint="Ejercicio"
+        app:layout_constraintBottom_toTopOf="@+id/desplegable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/incluir ejercicio" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
