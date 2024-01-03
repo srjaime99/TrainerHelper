@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">TrainerHelper</string>
+    <string name="app_name">dropDownMenuExample</string>
+    <string-array name="deportes">
+        <item>Natacion</item>
+        <item>Yoga</item>
+        <item>Patines</item>
+        <item>Tae kwondo</item>
+    </string-array>
+    <string name="spinner_hint">Selecciona un deporte</string>
 </resources>
