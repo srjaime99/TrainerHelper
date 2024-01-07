@@ -3,14 +3,16 @@ package com.example.trainerhelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Ejercicio {
+import java.io.Serializable;
+
+public class Ejercicio implements Serializable {
     private String deporte;
     private String nombreEjercicio;
     private String descripcion;
     private String materiales;
     private int duracion;
-    private int min;
-    private int max;
+    private int participantesMin;
+    private int participantesMax;
 
     // Constructor
     public Ejercicio(String deporte, String nombreEjercicio, String descripcion, String materiales, int duracion, int min, int max) {
@@ -19,15 +21,15 @@ public class Ejercicio {
         this.descripcion = descripcion;
         this.materiales = materiales;
         this.duracion = duracion;
-        this.min = min;
-        this.max = max;
+        this.participantesMin = min;
+        this.participantesMax = max;
     }
 
     public String enTexto(){
-        return ("Deporte: " + this.deporte + ", Nombre: " + this.nombreEjercicio + ", Duracion: " + this.descripcion);
+        return ("Deporte: " + this.deporte + "\nNombre: " + this.nombreEjercicio + "\nDescripcion: " + this.descripcion + "\nMateriales: " + this.materiales + "\nDuracion: " + this.duracion + "\nMinimo de participantes: " + this.participantesMin+ "\nMaximo de participantes: " + this.participantesMax);
     }
 
-    public JSONObject toJson() {
+    /*public JSONObject toJson() {
         //Metodo usado para convertir el objeto ejercicio a json
         JSONObject jsonEjercicio = new JSONObject();
         try {
@@ -38,9 +40,9 @@ public class Ejercicio {
             e.printStackTrace();
         }
         return jsonEjercicio;
-    }
+    }*/
 
-    public static Ejercicio fromJson(JSONObject jsonObject) {
+    /*public static Ejercicio fromJson(JSONObject jsonObject) {
         //Metodo usado para recuperar el ejercicio de un json
         try {
             String deporte = jsonObject.getString("deporte");
@@ -55,7 +57,7 @@ public class Ejercicio {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
 
     // Getters y setters para todos los atributos
     //getters
@@ -79,12 +81,12 @@ public class Ejercicio {
         return duracion;
     }
 
-    public int getMin() {
-        return min;
+    public int getParticipantesMin() {
+        return participantesMin;
     }
 
-    public int getMax() {
-        return max;
+    public int getParticipantesMax() {
+        return participantesMax;
     }
     //setters
 
@@ -108,11 +110,11 @@ public class Ejercicio {
         this.duracion = duracion;
     }
 
-    public void setMin(int min) {
-        this.min = min;
+    public void setParticipantesMin(int participantesMin) {
+        this.participantesMin = participantesMin;
     }
 
-    public void setMax(int max) {
-        this.max = max;
+    public void setParticipantesMax(int participantesMax) {
+        this.participantesMax = participantesMax;
     }
 }

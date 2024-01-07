@@ -1,23 +1,30 @@
 [
-    {
-      "deporte": "Fútbol",
-      "nombreEjercicio": "Calentamiento",
-      "duracion": 15
-    },
-    {
-      "deporte": "Fútbol",
-      "nombreEjercicio": "Ejercicio de pases",
-      "duracion": 20
-    },
-    {
-      "deporte": "Baloncesto",
-      "nombreEjercicio": "Estiramientos",
-      "duracion": 10
-    },
-    {
-      "deporte": "Baloncesto",
-      "nombreEjercicio": "Tiro al aro",
-      "duracion": 25
-    }
-  ]
+  {
+    "deporte": "Fútbol",
+    "nombreEjercicio": "Calentamiento",
+    "descripcion": "Se calienta",
+    "materiales": "Pelota",
+    "duracion": 15,
+    "participantesMin": 1,
+    "participantesMax": 10
+  },
+  {
+    "deporte": "Yoga",
+    "nombreEjercicio": "Postura T",
+    "descripcion": "De pie brazos estirados",
+    "materiales": "No",
+    "duracion": 5,
+    "participantesMin": 3,
+    "participantesMax": 33
+  },
+  {
+    "deporte": "Hockey",
+    "nombreEjercicio": "Calentamiento de partido doble",
+    "descripcion": "Dos filas saliendo alternas hasta medio campo y reciben pastilla desde la otra fila, tiro y cambiamos de fila",
+    "materiales": "Pucks, porteria y portero",
+    "duracion": 10,
+    "participantesMin": 2,
+    "participantesMax": 16
+  }
+]
 
