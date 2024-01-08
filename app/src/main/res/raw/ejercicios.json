@@ -9,6 +9,87 @@
     "participantesMax": 10
   },
   {
+    "deporte": "Fútbol",
+    "nombreEjercicio": "Pases precisos",
+    "descripcion": "Practicar pases cortos y precisos entre compañeros",
+    "materiales": "Pelota",
+    "duracion": 10,
+    "participantesMin": 2,
+    "participantesMax": 12
+  },
+  {
+    "deporte": "Fútbol",
+    "nombreEjercicio": "Juego de posesión",
+    "descripcion": "Mantener la posesión del balón en un espacio definido",
+    "materiales": "Pelota, conos",
+    "duracion": 20,
+    "participantesMin": 4,
+    "participantesMax": 20
+  },
+  {
+    "deporte": "Fútbol",
+    "nombreEjercicio": "Carrera de dribles",
+    "descripcion": "Competición de dribles a través de obstáculos",
+    "materiales": "Conos, balón",
+    "duracion": 15,
+    "participantesMin": 3,
+    "participantesMax": 15
+  },
+  {
+    "deporte": "Fútbol",
+    "nombreEjercicio": "Tiros a gol",
+    "descripcion": "Practicar tiros a gol desde diferentes posiciones",
+    "materiales": "Pelota, portería",
+    "duracion": 12,
+    "participantesMin": 2,
+    "participantesMax": 10
+  },
+  {
+    "deporte": "Fútbol",
+    "nombreEjercicio": "Ejercicio de regate",
+    "descripcion": "Mejorar la habilidad de regatear frente a un defensor",
+    "materiales": "Conos, balón",
+    "duracion": 10,
+    "participantesMin": 2,
+    "participantesMax": 15
+  },
+  {
+    "deporte": "Fútbol",
+    "nombreEjercicio": "Partido reducido",
+    "descripcion": "Juego de equipo en espacio reducido",
+    "materiales": "Pelota, conos",
+    "duracion": 25,
+    "participantesMin": 6,
+    "participantesMax": 20
+  },
+  {
+    "deporte": "Fútbol",
+    "nombreEjercicio": "Ejercicio de condicionamiento físico",
+    "descripcion": "Circuito para mejorar la resistencia",
+    "materiales": "Conos, cuerda",
+    "duracion": 18,
+    "participantesMin": 4,
+    "participantesMax": 15
+  },
+  {
+    "deporte": "Fútbol",
+    "nombreEjercicio": "Ejercicio de concentración",
+    "descripcion": "Pruebas para mejorar la concentración durante el juego",
+    "materiales": "Conos, pelota",
+    "duracion": 15,
+    "participantesMin": 3,
+    "participantesMax": 12
+  },
+  {
+    "deporte": "Fútbol",
+    "nombreEjercicio": "Ejercicio de estrategia",
+    "descripcion": "Simulación de situaciones estratégicas de juego",
+    "materiales": "Conos, pizarra táctica",
+    "duracion": 20,
+    "participantesMin": 5,
+    "participantesMax": 15
+  },
+  {
     "deporte": "Yoga",
     "nombreEjercicio": "Postura T",
     "descripcion": "De pie brazos estirados",
@@ -18,6 +99,87 @@
     "participantesMax": 33
   },
   {
+    "deporte": "Yoga",
+    "nombreEjercicio": "Meditación guiada",
+    "descripcion": "Sesión de meditación con guía para la relajación",
+    "materiales": "Cojines",
+    "duracion": 15,
+    "participantesMin": 1,
+    "participantesMax": 20
+  },
+  {
+    "deporte": "Yoga",
+    "nombreEjercicio": "Saludo al sol",
+    "descripcion": "Serie de posturas para estirar y calentar el cuerpo",
+    "materiales": "Esterillas",
+    "duracion": 12,
+    "participantesMin": 2,
+    "participantesMax": 15
+  },
+  {
+    "deporte": "Yoga",
+    "nombreEjercicio": "Respiración profunda",
+    "descripcion": "Ejercicio de respiración para relajación",
+    "materiales": "Ninguno",
+    "duracion": 8,
+    "participantesMin": 1,
+    "participantesMax": 25
+  },
+  {
+    "deporte": "Yoga",
+    "nombreEjercicio": "Respiración lenta",
+    "descripcion": "Ejercicio de respiración para aumentar la capacidad pulmonar",
+    "materiales": "Ninguno",
+    "duracion": 5,
+    "participantesMin": 1,
+    "participantesMax": 25
+  },
+  {
+    "deporte": "Yoga",
+    "nombreEjercicio": "Equilibrio en una pierna",
+    "descripcion": "Practicar el equilibrio en posturas de una pierna",
+    "materiales": "Esterillas",
+    "duracion": 10,
+    "participantesMin": 3,
+    "participantesMax": 20
+  },
+  {
+    "deporte": "Yoga",
+    "nombreEjercicio": "Estiramiento de espalda",
+    "descripcion": "Serie de posturas para estirar la espalda",
+    "materiales": "Esterillas",
+    "duracion": 15,
+    "participantesMin": 2,
+    "participantesMax": 18
+  },
+  {
+    "deporte": "Yoga",
+    "nombreEjercicio": "Pranayama",
+    "descripcion": "Ejercicios de respiración controlada",
+    "materiales": "Cojines",
+    "duracion": 12,
+    "participantesMin": 1,
+    "participantesMax": 25
+  },
+  {
+    "deporte": "Yoga",
+    "nombreEjercicio": "Yoga para la espalda",
+    "descripcion": "Sesión enfocada en fortalecer y estirar la espalda",
+    "materiales": "Esterillas",
+    "duracion": 18,
+    "participantesMin": 2,
+    "participantesMax": 15
+  },
+  {
+    "deporte": "Yoga",
+    "nombreEjercicio": "Yoga en pareja",
+    "descripcion": "Sesión de yoga realizada en pareja",
+    "materiales": "Esterillas",
+    "duracion": 20,
+    "participantesMin": 4,
+    "participantesMax": 12
+  },
+  {
     "deporte": "Hockey",
     "nombreEjercicio": "Calentamiento de partido doble",
     "descripcion": "Dos filas saliendo alternas hasta medio campo y reciben pastilla desde la otra fila, tiro y cambiamos de fila",
@@ -25,6 +187,86 @@
     "duracion": 10,
     "participantesMin": 2,
     "participantesMax": 16
+  },
+  {
+    "deporte": "Hockey",
+    "nombreEjercicio": "Práctica de desplazamiento lateral",
+    "descripcion": "Ejercicio para mejorar la movilidad lateral con el stick",
+    "materiales": "Pucks, sticks",
+    "duracion": 8,
+    "participantesMin": 2,
+    "participantesMax": 10
+  },
+  {
+    "deporte": "Hockey",
+    "nombreEjercicio": "Táctica de contraataque",
+    "descripcion": "Simulación de situaciones para practicar el contraataque",
+    "materiales": "Conos, pucks",
+    "duracion": 15,
+    "participantesMin": 4,
+    "participantesMax": 12
+  },
+  {
+    "deporte": "Hockey",
+    "nombreEjercicio": "Juego de tiros a gol",
+    "descripcion": "Practicar tiros a gol desde diferentes posiciones",
+    "materiales": "Pucks, portería",
+    "duracion": 12,
+    "participantesMin": 3,
+    "participantesMax": 15
+  },
+  {
+    "deporte": "Hockey",
+    "nombreEjercicio": "Ejercicio de regate con el puck",
+    "descripcion": "Mejorar la habilidad de regatear con el puck frente a un defensor",
+    "materiales": "Pucks, conos",
+    "duracion": 10,
+    "participantesMin": 3,
+    "participantesMax": 18
+  },
+  {
+    "deporte": "Hockey",
+    "nombreEjercicio": "Entrenamiento de portería",
+    "descripcion": "Ejercicios específicos para mejorar las habilidades del portero",
+    "materiales": "Pucks, portería",
+    "duracion": 20,
+    "participantesMin": 1,
+    "participantesMax": 2
+  },
+  {
+    "deporte": "Hockey",
+    "nombreEjercicio": "Juego de pases rápidos",
+    "descripcion": "Ejercicio para mejorar la rapidez en los pases entre jugadores",
+    "materiales": "Pucks, sticks",
+    "duracion": 15,
+    "participantesMin": 4,
+    "participantesMax": 16
+  },
+  {
+    "deporte": "Hockey",
+    "nombreEjercicio": "Ejercicio de resistencia en patinaje",
+    "descripcion": "Circuito para mejorar la resistencia en el patinaje",
+    "materiales": "Pucks, conos",
+    "duracion": 18,
+    "participantesMin": 4,
+    "participantesMax": 12
+  },
+  {
+    "deporte": "Hockey",
+    "nombreEjercicio": "Juego de situaciones tácticas",
+    "descripcion": "Simulación de situaciones tácticas durante el juego",
+    "materiales": "Pucks, conos, pizarra táctica",
+    "duracion": 25,
+    "participantesMin": 5,
+    "participantesMax": 20
+  },
+  {
+    "deporte": "Hockey",
+    "nombreEjercicio": "Ejercicio de control de puck",
+    "descripcion": "Practicar el control del puck en diferentes situaciones",
+    "materiales": "Pucks, conos",
+    "duracion": 15,
+    "participantesMin": 3,
+    "participantesMax": 15
   }
 ]
-

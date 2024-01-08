@@ -90,23 +90,16 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
         // Comprobar si el ejercicioCreado no es nulo antes de mostrar los valores
         if (ejercicio != null) {
             // Mostrar los valores del ejercicio
-            /*String mensaje = "Valores del ejercicio:\n" +
-                    "Deporte: " + ejercicioCreado.getDeporte() + "\n" +
-                    "Nombre: " + ejercicioCreado.getNombreEjercicio() + "\n" +
-                    "Descripción: " + ejercicioCreado.getDescripcion() + "\n" +
-                    "Materiales: " + ejercicioCreado.getMateriales() + "\n" +
-                    "Duración: " + ejercicioCreado.getDuracion() + "\n" +
-                    "Nº participantes mínimo: " + ejercicioCreado.getParticipantesMin() + "\n" +
-                    "Nº participantes máximo: " + ejercicioCreado.getParticipantesMax() + "\n";*/
+            resultadoTextView.setText(ejercicio.enTexto());
 
-            //resultadoTextView.setText(ejercicioCreado.enTexto());
-            List<Ejercicio> jamon = ManejoEjercicios.leerJson(this);
-            jamon.add(ejercicio);
-            ManejoEjercicios.escribirJson(jamon, this);
-            List<Ejercicio> jaaamon = ManejoEjercicios.leerJson(this);
-            resultadoTextView.setText(jamon.size() + "\n\n" + jaaamon.size());
+            //SON PRUEBAS PARA VER SI ESCRIBE EN EL JSON
+            //List<Ejercicio> jamon = ManejoEjercicios.leerJson(this);
+            //jamon.add(ejercicio);
+            //ManejoEjercicios.escribirJson(jamon, this);
+            //List<Ejercicio> jaaamon = ManejoEjercicios.leerJson(this);
+            //resultadoTextView.setText(jaaamon.size() + "\n\n" + jamon.size());
             //resultadoTextView.setText(jamon.get(0).enTexto());
-
+            //resultadoTextView.setText(ManejoEjercicios.listaEnTexto(ManejoEjercicios.crearSesion(jamon, "Yoga", 30)));
         } else {
             // Mostrar un mensaje en caso de que no se pueda obtener el ejercicio creado
             resultadoTextView.setText("No se pudo obtener el ejercicio creado.");
