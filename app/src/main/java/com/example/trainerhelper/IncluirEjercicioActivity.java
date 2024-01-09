@@ -1,4 +1,5 @@
 package com.example.trainerhelper;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -54,7 +55,19 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
             }
         });
 
-        // Otros inicializaciones o configuraciones que puedas necesitar en el método onCreate
+        Button btnVolver = findViewById(R.id.btnVolver);
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                volverAMenu();
+            }
+        });
+    }
+
+    private void volverAMenu() {
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     // Método para crear un objeto basado en las entradas del usuario
@@ -69,16 +82,16 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
             duracion = Integer.parseInt(duracionEditText.getText().toString());
         }
         int participantesMin;
-        if(duracionEditText.getText().toString().equals("")){
+        if(minDuracionEditText.getText().toString().equals("")){
             participantesMin = 0;
         }else{
-            participantesMin = Integer.parseInt(duracionEditText.getText().toString());
+            participantesMin = Integer.parseInt(minDuracionEditText.getText().toString());
         }
         int participantesMax;
-        if(duracionEditText.getText().toString().equals("")){
+        if(maxDuracionEditText.getText().toString().equals("")){
             participantesMax = 0;
         }else{
-            participantesMax = Integer.parseInt(duracionEditText.getText().toString());
+            participantesMax = Integer.parseInt(maxDuracionEditText.getText().toString());
         }
         String materiales = materialesEditText.getText().toString();
         String deporteSeleccionado = deporteSpinner.getSelectedItem().toString();

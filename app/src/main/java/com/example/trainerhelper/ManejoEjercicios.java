@@ -80,19 +80,34 @@ public class ManejoEjercicios {
         return duracionTotal;
     }
 
-    public static List<Ejercicio> crearSesion (List<Ejercicio> listaEjercicios, String deporte, int duracionMaxima){
+    public static List<Ejercicio> crearSesion (List<Ejercicio> listaEjercicios, String deporte, int duracionMaxima){//solucion cutre
         listaEjercicios = filtrarPorDeporte(listaEjercicios, deporte);
-        while (duracionTotalLista(listaEjercicios) > duracionMaxima){//solucion cutre
+        while (duracionTotalLista(listaEjercicios) > duracionMaxima){
             Collections.shuffle(listaEjercicios);
             listaEjercicios.remove(0);
         }
         return listaEjercicios;
     }
 
+    public static List<Ejercicio> crearSesionMejorado (List<Ejercicio> listaEjercicios, String deporte, int duracionMaxima){//solucion 10 veces mas cutre (literalmente)
+        List<List<Ejercicio>> listaListas = new ArrayList<List<Ejercicio>>();
+        for (int i = 0; i <  10; i++){
+            listaListas.add(crearSesion(listaEjercicios, deporte,duracionMaxima));
+        }
+        while(listaListas.size() != 1){
+            if(duracionTotalLista(listaListas.get(0)) < duracionTotalLista(listaListas.get(1))){
+                listaListas.remove(0);
+            }else{
+                listaListas.remove(1);
+            }
+        }
+        return listaListas.get(0);
+    }
+
     public static String listaEnTexto (List<Ejercicio> listaEjercicios){
         String texto = "";
         for(int i = 0; i < listaEjercicios.size(); i++){
-            texto = texto + "\nNombre: " + listaEjercicios.get(i).getNombreEjercicio() + " | Duracion: " + listaEjercicios.get(i).getDuracion();
+            texto = texto + "\n" + listaEjercicios.get(i).getNombreEjercicio() + " | " + listaEjercicios.get(i).getDuracion() + "'";
         }
         return texto;
     }
