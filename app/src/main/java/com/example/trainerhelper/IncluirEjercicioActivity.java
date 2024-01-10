@@ -11,6 +11,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class IncluirEjercicioActivity extends AppCompatActivity {
@@ -38,12 +43,21 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
         materialesEditText = findViewById(R.id.Material);
         deporteSpinner = findViewById(R.id.spinner);
         resultadoTextView = findViewById(R.id.resultado);
+        /*
         // Cargar los valores del Spinner desde strings.xml
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.deportes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Configurar el adaptador en el Spinner
         deporteSpinner.setAdapter(adapter);
+         */
+
+        Spinner deporteSpinner = findViewById(R.id.spinner);
+        String[] deportesArray = ManejoDeportes.recuperarDeportes(getResources().openRawResource(R.raw.deportes));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, deportesArray);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        deporteSpinner.setAdapter(adapter);
+
         // Configurar el botón "Aceptar"
         Button aceptarButton = findViewById(R.id.botonSiguiente);
         aceptarButton.setOnClickListener(new View.OnClickListener() {

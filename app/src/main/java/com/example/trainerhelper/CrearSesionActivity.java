@@ -8,8 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class CrearSesionActivity extends AppCompatActivity {
 
@@ -21,8 +25,14 @@ public class CrearSesionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_sesion);
 
-        Spinner deporteSpinner = findViewById(R.id.spinner);
+        /*Spinner deporteSpinner = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.deportes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        deporteSpinner.setAdapter(adapter);*/
+
+        Spinner deporteSpinner = findViewById(R.id.spinner);
+        String[] deportesArray = ManejoDeportes.recuperarDeportes(getResources().openRawResource(R.raw.deportes));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, deportesArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         deporteSpinner.setAdapter(adapter);
 
