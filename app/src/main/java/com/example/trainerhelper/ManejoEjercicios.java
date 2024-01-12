@@ -29,23 +29,25 @@ public class ManejoEjercicios {
     public static List<Ejercicio> leerEjercicios(Context context) {
         Gson gson = new Gson();
         String text = "";
+        StringBuilder stringBuilder = new StringBuilder();
         try {
             String yourFilePath = context.getFilesDir() + "/ejercicios.json";
             File yourFile = new File(yourFilePath);
-            InputStream inputStream = new FileInputStream(yourFile);
-            StringBuilder stringBuilder = new StringBuilder();
-            if (inputStream != null) {
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String receiveString = "";
-                while ((receiveString = bufferedReader.readLine()) != null){
-                    stringBuilder.append(receiveString);
+            if (yourFile != null) {
+                InputStream inputStream = new FileInputStream(yourFile);
+                if (inputStream != null) {
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                    String receiveString = "";
+                    while ((receiveString = bufferedReader.readLine()) != null){
+                        stringBuilder.append(receiveString);
+                    }
+                    inputStream.close();
+                    text = stringBuilder.toString();
+                    Type listType = new TypeToken<ArrayList<Ejercicio>>(){}.getType();
+                    List<Ejercicio> listaEjercicios = gson.fromJson(text, listType);
+                    return listaEjercicios;
                 }
-                inputStream.close();
-                text = stringBuilder.toString();
-                Type listType = new TypeToken<ArrayList<Ejercicio>>(){}.getType();
-                List<Ejercicio> listaEjercicios = gson.fromJson(text, listType);
-                return listaEjercicios;
             }
         } catch (FileNotFoundException e) {
         } catch (IOException e) {
@@ -72,12 +74,16 @@ public class ManejoEjercicios {
 
     public static List<Ejercicio> filtrarPorDeporte (List<Ejercicio> listaEjercicios, String deporte){
         List<Ejercicio> listaFiltrada = new ArrayList<Ejercicio>();
-        for(int i = 0; i < listaEjercicios.size(); i++){
-            if(listaEjercicios.get(i).getDeporte().equals(deporte)){
-                listaFiltrada.add(listaEjercicios.get(i));
+        if (listaEjercicios != null && listaEjercicios.size() > 0) {
+            for(int i = 0; i < listaEjercicios.size(); i++){
+                if(listaEjercicios.get(i).getDeporte().equals(deporte)){
+                    listaFiltrada.add(listaEjercicios.get(i));
+                }
             }
+            return listaFiltrada;
+        } else {
+            return listaEjercicios;
         }
-        return listaFiltrada;
     }
 
     public static int duracionTotalLista (List<Ejercicio> listaEjercicios){
@@ -114,9 +120,11 @@ public class ManejoEjercicios {
 
     public static String listaEnTexto (List<Ejercicio> listaEjercicios){
         String texto = "";
-        for(int i = 0; i < listaEjercicios.size(); i++){
-            texto = texto + "\n" + listaEjercicios.get(i).getNombreEjercicio() + " | " + listaEjercicios.get(i).getDuracion() + "'";
-        }
-        return texto;
+        if (listaEjercicios != null && listaEjercicios.size() > 0) {
+            for(int i = 0; i < listaEjercicios.size(); i++){
+                texto = texto + "\n" + listaEjercicios.get(i).getNombreEjercicio() + " | " + listaEjercicios.get(i).getDuracion() + "'";
+            }
+            return texto;
+        } else return "";
     }
 }

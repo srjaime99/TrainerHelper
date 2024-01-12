@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IncluirEjercicioActivity extends AppCompatActivity {
@@ -102,17 +103,13 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
     private void mostrarValoresDelEjercicioCreado() {
         // Comprobar si el ejercicioCreado no es nulo antes de mostrar los valores
         if (ejercicio != null) {
-            // Mostrar los valores del ejercicio
+            List<Ejercicio> listaEjercicios = ManejoEjercicios.leerEjercicios(this);
+            if (listaEjercicios == null || listaEjercicios.size() < 1) {
+                listaEjercicios = new ArrayList<Ejercicio>();
+            }
+            listaEjercicios.add(ejercicio);
+            ManejoEjercicios.escribirEjercicios(this, listaEjercicios);
             resultadoTextView.setText(ejercicio.enTexto());
-
-            //SON PRUEBAS PARA VER SI ESCRIBE EN EL JSON
-            //List<Ejercicio> jamon = ManejoEjercicios.leerJson(this);
-            //jamon.add(ejercicio);
-            //ManejoEjercicios.escribirJson(jamon, this);
-            //List<Ejercicio> jaaamon = ManejoEjercicios.leerJson(this);
-            //resultadoTextView.setText(jaaamon.size() + "\n\n" + jamon.size());
-            //resultadoTextView.setText(jamon.get(0).enTexto());
-            //resultadoTextView.setText(ManejoEjercicios.listaEnTexto(ManejoEjercicios.crearSesion(jamon, "Yoga", 30)));
         } else {
             // Mostrar un mensaje en caso de que no se pueda obtener el ejercicio creado
             resultadoTextView.setText("No se pudo obtener el ejercicio creado.");
