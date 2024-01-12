@@ -7,4 +7,6 @@
         <item>Tae kwondo</item>
     </string-array>
     <string name="spinner_hint">Selecciona un deporte</string>
+    <string name="back_menu_button">Volver al menú</string>
+    <string name="view_exercises_button">Ver ejercicios</string>
 </resources>

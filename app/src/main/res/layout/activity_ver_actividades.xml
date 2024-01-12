@@ -15,14 +15,14 @@
         android:id="@+id/btnVolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volver a Menú" />
+        android:text="@string/back_menu_button" />
 
     <Button
         android:id="@+id/btnVerEjercicios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="Ver ejercicios" />
+        android:text="@string/view_exercises_button" />
 
     <Spinner
         android:id="@+id/spinner"
