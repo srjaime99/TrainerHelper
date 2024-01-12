@@ -2,65 +2,73 @@ package com.example.trainerhelper;
 
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ManejoEjercicios {
-    public static List<Ejercicio> leerJson(Context context) {
-        StringBuilder jsonContent = new StringBuilder();
+
+    public static List<Ejercicio> leerEjercicios(Context context) {
+        Gson gson = new Gson();
+        String text = "";
         try {
-            InputStream ruta = context.getResources().openRawResource(R.raw.ejercicios);
-
-            InputStreamReader inputStreamReader = new InputStreamReader(ruta);
-            int data = inputStreamReader.read();
-
-            while (data != -1) {
-                char current = (char) data;
-                jsonContent.append(current);
-                data = inputStreamReader.read();
+            String yourFilePath = context.getFilesDir() + "/ejercicios.json";
+            File yourFile = new File(yourFilePath);
+            InputStream inputStream = new FileInputStream(yourFile);
+            StringBuilder stringBuilder = new StringBuilder();
+            if (inputStream != null) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                while ((receiveString = bufferedReader.readLine()) != null){
+                    stringBuilder.append(receiveString);
+                }
+                inputStream.close();
+                text = stringBuilder.toString();
+                Type listType = new TypeToken<ArrayList<Ejercicio>>(){}.getType();
+                List<Ejercicio> listaEjercicios = gson.fromJson(text, listType);
+                return listaEjercicios;
             }
-            ruta.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        String cadenaEjercicios = jsonContent.toString();
-
-        Gson gson = new Gson();
-        Type tipoLista = new TypeToken<List<Ejercicio>>() {}.getType();
-        List<Ejercicio> listaEjercicios = gson.fromJson(cadenaEjercicios, tipoLista);
-
-        return listaEjercicios;
-    }
-
-    public static void escribirJson(List<Ejercicio> listaEjercicios, Context context){
-        Gson gson = new Gson();
-        String json = gson.toJson(listaEjercicios);
-        try {
-            //File file = new File(context.getFilesDir(), "ejercicios.json");
-            //FileWriter fileWriter = new FileWriter(new File(context.getFilesDir(), "ejercicios.json").getAbsolutePath());
-            //FileWriter fileWriter = new FileWriter(context.getFilesDir() + "/ejercicios.json");
-            FileOutputStream fileOutputStream = context.openFileOutput("ejercicios.json", Context.MODE_PRIVATE);
-            fileOutputStream.write(json.getBytes());
-            fileOutputStream.close();
-            //fileWriter.write(json);
-            //fileWriter.close();
+        } catch (FileNotFoundException e) {
         } catch (IOException e) {
-            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    public static void escribirEjercicios(Context context, List<Ejercicio> listaEjercicios) {
+        try {
+            Gson gson = new Gson();
+            String json = gson.toJson(listaEjercicios);
+            String path = context.getFilesDir() + "/ejercicios.json";
+            File file = new File(path);
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            fileOutputStream.write(json.getBytes());
+            fileOutputStream.flush();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            System.out.println("No se ha podido escribir");
         }
     }
+
 
     public static List<Ejercicio> filtrarPorDeporte (List<Ejercicio> listaEjercicios, String deporte){
         List<Ejercicio> listaFiltrada = new ArrayList<Ejercicio>();

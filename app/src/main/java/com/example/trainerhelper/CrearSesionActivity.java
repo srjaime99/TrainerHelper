@@ -55,7 +55,7 @@ public class CrearSesionActivity extends AppCompatActivity {
 
     private void mostrarSesion(String deporteSeleccionado, int duracion){
         //sesionCreadaTextView.setText(ManejoEjercicios.listaEnTexto(ManejoEjercicios.crearSesion(ManejoEjercicios.leerJson(this), deporteSeleccionado, duracion)));
-        sesionCreadaTextView.setText(ManejoEjercicios.listaEnTexto(ManejoEjercicios.crearSesionMejorado(ManejoEjercicios.leerJson(this), deporteSeleccionado, duracion)));
+        sesionCreadaTextView.setText(ManejoEjercicios.listaEnTexto(ManejoEjercicios.crearSesionMejorado(ManejoEjercicios.leerEjercicios(this), deporteSeleccionado, duracion)));
     }
 
     private void volverAMenu() {
