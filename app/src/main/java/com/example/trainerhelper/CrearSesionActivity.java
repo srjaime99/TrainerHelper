@@ -47,7 +47,6 @@ public class CrearSesionActivity extends AppCompatActivity {
                 }else{
                     duracion = Integer.parseInt(duracionEditText.getText().toString());
                 }
-                //String deporteSeleccionado = "Yoga";
                 mostrarSesion(deporteSeleccionado, duracion);
             }
         });

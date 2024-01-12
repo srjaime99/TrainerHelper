@@ -13,12 +13,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -106,7 +103,7 @@ public class ManejoEjercicios {
     public static List<Ejercicio> crearSesionMejorado (List<Ejercicio> listaEjercicios, String deporte, int duracionMaxima){//solucion 10 veces mas cutre (literalmente)
         List<List<Ejercicio>> listaListas = new ArrayList<List<Ejercicio>>();
         for (int i = 0; i <  10; i++){
-            listaListas.add(crearSesion(listaEjercicios, deporte,duracionMaxima));
+            listaListas.add(crearSesion(listaEjercicios, deporte, duracionMaxima));
         }
         while(listaListas.size() != 1){
             if(duracionTotalLista(listaListas.get(0)) < duracionTotalLista(listaListas.get(1))){

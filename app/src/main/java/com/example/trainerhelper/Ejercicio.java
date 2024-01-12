@@ -29,36 +29,6 @@ public class Ejercicio implements Serializable {
         return ("Deporte: " + this.deporte + "\nNombre: " + this.nombreEjercicio + "\nDescripcion: " + this.descripcion + "\nMateriales: " + this.materiales + "\nDuracion: " + this.duracion + "\nMinimo de participantes: " + this.participantesMin+ "\nMaximo de participantes: " + this.participantesMax);
     }
 
-    /*public JSONObject toJson() {
-        //Metodo usado para convertir el objeto ejercicio a json
-        JSONObject jsonEjercicio = new JSONObject();
-        try {
-            jsonEjercicio.put("deporte", deporte);
-            jsonEjercicio.put("nombre", nombreEjercicio);
-            jsonEjercicio.put("duracion", descripcion);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return jsonEjercicio;
-    }*/
-
-    /*public static Ejercicio fromJson(JSONObject jsonObject) {
-        //Metodo usado para recuperar el ejercicio de un json
-        try {
-            String deporte = jsonObject.getString("deporte");
-            String nombre = jsonObject.getString("nombre");
-            String descripcion = jsonObject.getString("descripcion");
-            String materiales = jsonObject.getString("materiales");
-            int duracion = jsonObject.getInt("duracion");
-            int min = jsonObject.getInt("min");
-            int max = jsonObject.getInt("max");
-            return new Ejercicio(deporte, nombre, descripcion, materiales, duracion, min, max);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }*/
-
     // Getters y setters para todos los atributos
     //getters
     public String getDeporte() {

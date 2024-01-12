@@ -1,4 +1,5 @@
 package com.example.trainerhelper;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,8 +20,8 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
     private EditText nombreEjercicioEditText;
     private EditText descripcionEjercicioEditText;
     private EditText duracionEditText;
-    private EditText minDuracionEditText;
-    private EditText maxDuracionEditText;
+    private EditText minParticipantesEditText;
+    private EditText maxParticipantesEditText;
     private EditText materialesEditText;
     private Spinner deporteSpinner;
     private TextView resultadoTextView;
@@ -34,8 +35,8 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
         nombreEjercicioEditText = findViewById(R.id.nombreEjercicio);
         descripcionEjercicioEditText = findViewById(R.id.descripcionEjercicio);
         duracionEditText = findViewById(R.id.duracion);
-        minDuracionEditText = findViewById(R.id.minimo_duracion);//cambiar nombre a minimo participantes
-        maxDuracionEditText = findViewById(R.id.maximo_duracion);//cambiar nombre a maximo participantes
+        minParticipantesEditText = findViewById(R.id.minimo_duracion);//cambiar nombre a minimo participantes
+        maxParticipantesEditText = findViewById(R.id.maximo_duracion);//cambiar nombre a maximo participantes
         materialesEditText = findViewById(R.id.Material);
         deporteSpinner = findViewById(R.id.spinner);
         resultadoTextView = findViewById(R.id.resultado);
@@ -83,22 +84,23 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
             duracion = Integer.parseInt(duracionEditText.getText().toString());
         }
         int participantesMin;
-        if(minDuracionEditText.getText().toString().equals("")){
+        if(minParticipantesEditText.getText().toString().equals("")){
             participantesMin = 0;
         }else{
-            participantesMin = Integer.parseInt(minDuracionEditText.getText().toString());
+            participantesMin = Integer.parseInt(minParticipantesEditText.getText().toString());
         }
         int participantesMax;
-        if(maxDuracionEditText.getText().toString().equals("")){
+        if(maxParticipantesEditText.getText().toString().equals("")){
             participantesMax = 0;
         }else{
-            participantesMax = Integer.parseInt(maxDuracionEditText.getText().toString());
+            participantesMax = Integer.parseInt(maxParticipantesEditText.getText().toString());
         }
         String materiales = materialesEditText.getText().toString();
         String deporteSeleccionado = deporteSpinner.getSelectedItem().toString();
 
         // Crear un nuevo objeto Ejercicio con los valores obtenidos
         ejercicio = new Ejercicio(deporteSeleccionado, nombreEjercicio, descripcionEjercicio, materiales, duracion, participantesMin, participantesMax);
+        //crear toast con confirmacion
     }
     private void mostrarValoresDelEjercicioCreado() {
         // Comprobar si el ejercicioCreado no es nulo antes de mostrar los valores
