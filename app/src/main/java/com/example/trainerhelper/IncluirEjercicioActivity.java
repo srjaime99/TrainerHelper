@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,6 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
     private EditText maxParticipantesEditText;
     private EditText materialesEditText;
     private Spinner deporteSpinner;
-    private TextView resultadoTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { //este metodo determina lo que hace la actividad cuando se inicia
@@ -35,11 +35,10 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
         nombreEjercicioEditText = findViewById(R.id.nombreEjercicio);
         descripcionEjercicioEditText = findViewById(R.id.descripcionEjercicio);
         duracionEditText = findViewById(R.id.duracion);
-        minParticipantesEditText = findViewById(R.id.minimo_duracion);//cambiar nombre a minimo participantes
-        maxParticipantesEditText = findViewById(R.id.maximo_duracion);//cambiar nombre a maximo participantes
+        minParticipantesEditText = findViewById(R.id.minimo_personas);//cambiar nombre a minimo participantes
+        maxParticipantesEditText = findViewById(R.id.maximo_personas);//cambiar nombre a maximo participantes
         materialesEditText = findViewById(R.id.Material);
         deporteSpinner = findViewById(R.id.spinner);
-        resultadoTextView = findViewById(R.id.resultado);
         // Cargar los valores del Spinner desde strings.xml
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.deportes, android.R.layout.simple_spinner_item);
@@ -53,6 +52,8 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Lógica para manejar el clic en el botón "Aceptar"
                 crearObjetoDesdeEntradasUsuario();
+                Toast.makeText(IncluirEjercicioActivity.this, "Se ha creado el ejercicio", Toast.LENGTH_SHORT).show();
+                volverAMenu();
             }
         });
 
@@ -106,10 +107,8 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
             }
             AppData.LISTA_EJERCICIOS.add(ejercicio);
             AppData.escribirEjercicios(this);
-            resultadoTextView.setText(ejercicio.enTexto());
         } else {
-            // Mostrar un mensaje en caso de que no se pueda obtener el ejercicio creado
-            resultadoTextView.setText("No se pudo obtener el ejercicio creado.");
+            System.out.println("No se pudo añadir el ejercicio correctamente");
         }
 
         //crear toast con confirmacion

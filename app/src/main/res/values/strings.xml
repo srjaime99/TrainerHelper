@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">dropDownMenuExample</string>
+    <string name="app_name">TrainerHelper</string>
     <string-array name="deportes">
         <item>Hockey</item>
         <item>Patines</item>

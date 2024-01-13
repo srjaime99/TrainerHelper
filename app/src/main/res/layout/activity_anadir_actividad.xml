@@ -8,7 +8,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8BC34A"
+    android:background="#51BBD5"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="45dp">
 
@@ -21,31 +21,7 @@
         android:text="atras"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <!--
-    <Button
-        android:id="@+id/acpetarButton"
-        android:layout_width="332dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:height="50dp"
-        android:onClick="buttonPress"
-        android:text="Aceptar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DeporTetextView" />
 
-    <TextView
-        android:id="@+id/DeporTetextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="152dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />-->
 
     <EditText
         android:id="@+id/Material"
@@ -59,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/minimo_duracion" />
+        app:layout_constraintTop_toBottomOf="@+id/minimo_personas" />
 
 
     <TextView
@@ -120,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/descripcionEjercicio" />
 
     <EditText
-        android:id="@+id/minimo_duracion"
+        android:id="@+id/minimo_personas"
         android:layout_width="80dp"
         android:layout_height="48dp"
         android:layout_alignParentLeft="false"
@@ -136,7 +112,7 @@
         app:layout_constraintTop_toBottomOf="@+id/descripcionEjercicio" />
 
     <EditText
-        android:id="@+id/maximo_duracion"
+        android:id="@+id/maximo_personas"
         android:layout_width="80dp"
         android:layout_height="48dp"
         android:layout_alignParentLeft="false"
@@ -149,7 +125,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/minimo_duracion"
+        app:layout_constraintStart_toEndOf="@+id/minimo_personas"
         app:layout_constraintTop_toBottomOf="@+id/descripcionEjercicio" />
 
     <Spinner
@@ -162,7 +138,7 @@
         android:layout_marginBottom="138dp"
         android:prompt="@string/spinner_hint"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/maximo_duracion"
+        app:layout_constraintBottom_toTopOf="@+id/maximo_personas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -174,20 +150,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Siguiente"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Material" />
-
-    <TextView
-        android:id="@+id/resultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonSiguiente"
-        app:layout_constraintVertical_bias="0.479" />
+        app:layout_constraintTop_toBottomOf="@+id/Material" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
