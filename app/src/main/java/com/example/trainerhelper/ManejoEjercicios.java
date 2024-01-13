@@ -2,72 +2,24 @@ package com.example.trainerhelper;
 
 
 import android.content.Context;
-import android.util.Log;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ManejoEjercicios {
-
-    public static List<Ejercicio> leerEjercicios(Context context) {
-        Gson gson = new Gson();
-        String text = "";
-        StringBuilder stringBuilder = new StringBuilder();
-        try {
-            String yourFilePath = context.getFilesDir() + "/ejercicios.json";
-            File yourFile = new File(yourFilePath);
-            if (yourFile != null) {
-                InputStream inputStream = new FileInputStream(yourFile);
-                if (inputStream != null) {
-                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                    String receiveString = "";
-                    while ((receiveString = bufferedReader.readLine()) != null){
-                        stringBuilder.append(receiveString);
-                    }
-                    inputStream.close();
-                    text = stringBuilder.toString();
-                    Type listType = new TypeToken<ArrayList<Ejercicio>>(){}.getType();
-                    List<Ejercicio> listaEjercicios = gson.fromJson(text, listType);
-                    return listaEjercicios;
+    public static boolean borrarEjercicio(String nombreEjercicio, Context context){
+        if (AppData.LISTA_EJERCICIOS != null && AppData.LISTA_EJERCICIOS.size() > 0) {
+            for(int i = 0; i < AppData.LISTA_EJERCICIOS.size(); i++){
+                if(AppData.LISTA_EJERCICIOS.get(i).getNombreEjercicio().equals(nombreEjercicio)){
+                    AppData.LISTA_EJERCICIOS.remove(i);
+                    AppData.escribirEjercicios(context);
+                    return true;
                 }
             }
-        } catch (FileNotFoundException e) {
-        } catch (IOException e) {
         }
-        return null;
-
+        return false;
     }
-
-    public static void escribirEjercicios(Context context, List<Ejercicio> listaEjercicios) {
-        try {
-            Gson gson = new Gson();
-            String json = gson.toJson(listaEjercicios);
-            String path = context.getFilesDir() + "/ejercicios.json";
-            File file = new File(path);
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            fileOutputStream.write(json.getBytes());
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            System.out.println("No se ha podido escribir");
-        }
-    }
-
 
     public static List<Ejercicio> filtrarPorDeporte (List<Ejercicio> listaEjercicios, String deporte){
         List<Ejercicio> listaFiltrada = new ArrayList<Ejercicio>();
@@ -120,6 +72,16 @@ public class ManejoEjercicios {
         if (listaEjercicios != null && listaEjercicios.size() > 0) {
             for(int i = 0; i < listaEjercicios.size(); i++){
                 texto = texto + "\n" + listaEjercicios.get(i).getNombreEjercicio() + " | " + listaEjercicios.get(i).getDuracion() + "'";
+            }
+            return texto;
+        } else return "";
+    }
+
+    public static String listaEnTextoEntero (List<Ejercicio> listaEjercicios){
+        String texto = "";
+        if (listaEjercicios != null && listaEjercicios.size() > 0) {
+            for(int i = 0; i < listaEjercicios.size(); i++){
+                texto = texto + "\n" + listaEjercicios.get(i).getNombreEjercicio() + " | " + listaEjercicios.get(i).getDuracion() + "' | " + listaEjercicios.get(i).getMateriales() + " | " + listaEjercicios.get(i).getParticipantesMin() + " | " + listaEjercicios.get(i).getParticipantesMax();
             }
             return texto;
         } else return "";

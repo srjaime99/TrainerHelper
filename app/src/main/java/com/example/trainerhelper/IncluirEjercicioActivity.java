@@ -53,7 +53,6 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Lógica para manejar el clic en el botón "Aceptar"
                 crearObjetoDesdeEntradasUsuario();
-                mostrarValoresDelEjercicioCreado();
             }
         });
 
@@ -100,21 +99,19 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
 
         // Crear un nuevo objeto Ejercicio con los valores obtenidos
         ejercicio = new Ejercicio(deporteSeleccionado, nombreEjercicio, descripcionEjercicio, materiales, duracion, participantesMin, participantesMax);
-        //crear toast con confirmacion
-    }
-    private void mostrarValoresDelEjercicioCreado() {
-        // Comprobar si el ejercicioCreado no es nulo antes de mostrar los valores
+
         if (ejercicio != null) {
-            List<Ejercicio> listaEjercicios = ManejoEjercicios.leerEjercicios(this);
-            if (listaEjercicios == null || listaEjercicios.size() < 1) {
-                listaEjercicios = new ArrayList<Ejercicio>();
+            if (AppData.LISTA_EJERCICIOS == null || AppData.LISTA_EJERCICIOS.size() < 1) {
+                AppData.LISTA_EJERCICIOS = new ArrayList<Ejercicio>();
             }
-            listaEjercicios.add(ejercicio);
-            ManejoEjercicios.escribirEjercicios(this, listaEjercicios);
+            AppData.LISTA_EJERCICIOS.add(ejercicio);
+            AppData.escribirEjercicios(this);
             resultadoTextView.setText(ejercicio.enTexto());
         } else {
             // Mostrar un mensaje en caso de que no se pueda obtener el ejercicio creado
             resultadoTextView.setText("No se pudo obtener el ejercicio creado.");
         }
+
+        //crear toast con confirmacion
     }
 }

@@ -31,6 +31,13 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MenuActivity.this, VerActividadesActivity.class));
             }
         });
+
+        findViewById(R.id.btnBorrarActividad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuActivity.this, BorrarEjercicioActivity.class));
+            }
+        });
     }
 }
 

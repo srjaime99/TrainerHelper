@@ -51,6 +51,6 @@ public class VerActividadesActivity extends AppCompatActivity {
     }
 
     private void mostrarEjercicios(String deporte){
-        muestraDeEjerciciosTextView.setText(ManejoEjercicios.listaEnTexto(ManejoEjercicios.filtrarPorDeporte(ManejoEjercicios.leerEjercicios(this), deporte)));
+        muestraDeEjerciciosTextView.setText(ManejoEjercicios.listaEnTextoEntero(ManejoEjercicios.filtrarPorDeporte(AppData.LISTA_EJERCICIOS, deporte)));
     }
 }

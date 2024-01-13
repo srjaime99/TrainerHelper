@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">dropDownMenuExample</string>
     <string-array name="deportes">
+        <item>Hockey</item>
+        <item>Patines</item>
         <item>Natacion</item>
         <item>Yoga</item>
-        <item>Patines</item>
-        <item>Tae kwondo</item>
+        <item>Fútbol</item>
     </string-array>
     <string name="spinner_hint">Selecciona un deporte</string>
     <string name="back_menu_button">Volver al menú</string>

@@ -10,8 +10,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Puedes iniciar la MenuActivity directamente desde la MainActivity si es la actividad principal.
+        AppData.leerEjercicios(this);
         startActivity(new Intent(this, MenuActivity.class));
-        finish();  // Opcional: cierra la MainActivity si no deseas volver a ella.
+        finish();
     }
 }

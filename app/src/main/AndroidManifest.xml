@@ -30,7 +30,7 @@
 
         <activity android:name=".VerActividadesActivity"></activity>
 
-
+        <activity android:name=".BorrarEjercicioActivity"></activity>
 
     </application>
 
