@@ -1,18 +1,16 @@
 <!-- Diseño para la actividad de "Ver actividades" -->
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8BC34A">
+    android:background="@color/background">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#8BC34A"
+        android:background="@color/background"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="45dp">
 
@@ -22,25 +20,28 @@
             android:id="@+id/btnVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/back_menu_button" />
+            android:backgroundTint="@color/button"
+            android:text="@string/atras" />
 
         <Button
             android:id="@+id/btnVerEjercicios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="@string/view_exercises_button" />
+            android:backgroundTint="@color/button"
+            android:text="@string/ver_actividades" />
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="100dp"
             android:layout_marginTop="75dp"
             android:layout_marginEnd="100dp"
             android:layout_marginBottom="138dp"
+            android:entries="@array/deportes"
             android:prompt="@string/spinner_hint"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,8 +60,8 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="-100dp"
             android:layout_marginEnd="50dp"
+            android:text="@string/nada"
             android:textSize="18sp"
-            android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

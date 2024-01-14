@@ -1,14 +1,12 @@
 <!-- Diseño para la actividad de "Añadir Actividad" -->
     <!-- Contenido de la actividad aquí -->
-
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#51BBD5"
+    android:background="@color/background"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="45dp">
 
@@ -18,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:text="atras"
+        android:backgroundTint="@color/button"
+        android:text="@string/atras"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:ems="10"
-        android:hint="Materiales"
+        android:hint="@string/materiales"
         android:inputType="text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +43,7 @@
         android:layout_height="25dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="30dp"
-        android:text="Añadir actividad"
+        android:text="@string/incluir_actividad"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/spinner"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +59,7 @@
         android:layout_marginTop="150dp"
         android:layout_marginEnd="20dp"
         android:height="48dp"
-        android:hint="Ejercicio"
+        android:hint="@string/ejercicio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,12 +72,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:height="48dp"
-        android:hint="Descripcion"
+        android:hint="@string/descripcion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreEjercicio"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreEjercicio" />
 
     <EditText
         android:id="@+id/duracion"
@@ -90,7 +88,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="44dp"
         android:ems="10"
-        android:hint="Duracion"
+        android:hint="@string/duracion"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descripcionEjercicio" />
@@ -104,7 +102,7 @@
         android:layout_alignParentRight="false"
         android:layout_marginTop="44dp"
         android:ems="10"
-        android:hint="Min."
+        android:hint="@string/min"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.281"
@@ -121,7 +119,7 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
-        android:hint="Max."
+        android:hint="@string/max"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -149,7 +147,8 @@
         android:id="@+id/botonSiguiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Siguiente"
+        android:backgroundTint="@color/button"
+        android:text="@string/siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">TrainerHelper</string>
+    <string name="atras">atras</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="incluir_actividad">Añadir actividad</string>
+    <string name="ejercicio">Ejercicio</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="duracion">Duración</string>
+    <string name="min">Min.</string>ç
+    <string name="max">Max.</string>
+    <string name="materiales">Materiales</string>
+    <string name="spinner_hint">Selecciona un deporte</string>
+    <string name="crear_sesion">Crear sesión</string>
+    <string name="nada"> </string>
+    <string name="borrar_actividad">Borrar actividad</string>
+    <string name="borrar">Borrar</string>
+    <string name="ver_actividades">Ver actividades</string>
+    <string name="copyright">TrainerHelper - Developed by Jaime and Manuel © 2024</string>
     <string-array name="deportes">
         <item>Hockey</item>
         <item>Patines</item>
@@ -7,7 +23,4 @@
         <item>Yoga</item>
         <item>Fútbol</item>
     </string-array>
-    <string name="spinner_hint">Selecciona un deporte</string>
-    <string name="back_menu_button">Volver al menú</string>
-    <string name="view_exercises_button">Ver ejercicios</string>
 </resources>
