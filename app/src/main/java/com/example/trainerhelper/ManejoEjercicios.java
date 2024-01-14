@@ -3,6 +3,7 @@ package com.example.trainerhelper;
 
 import android.content.Context;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -68,7 +69,7 @@ public class ManejoEjercicios {
     }
 
     public static String listaEnTexto (List<Ejercicio> listaEjercicios){
-        String texto = "";
+        String texto = "Sesion " + fecha() + "\n";
         if (listaEjercicios != null && listaEjercicios.size() > 0) {
             for(int i = 0; i < listaEjercicios.size(); i++){
                 texto = texto + "\n" + listaEjercicios.get(i).getNombreEjercicio() + " | " + listaEjercicios.get(i).getDuracion() + "'";
@@ -81,9 +82,30 @@ public class ManejoEjercicios {
         String texto = "";
         if (listaEjercicios != null && listaEjercicios.size() > 0) {
             for(int i = 0; i < listaEjercicios.size(); i++){
-                texto = texto + "\n" + listaEjercicios.get(i).getNombreEjercicio() + " | " + listaEjercicios.get(i).getDuracion() + "' | " + listaEjercicios.get(i).getMateriales() + " | " + listaEjercicios.get(i).getParticipantesMin() + " | " + listaEjercicios.get(i).getParticipantesMax();
+                texto = texto + listaEjercicios.get(i).getNombreEjercicio() + " | " + listaEjercicios.get(i).getDuracion() + "' | " + listaEjercicios.get(i).getMateriales() + " | " + listaEjercicios.get(i).getParticipantesMin() + " | " + listaEjercicios.get(i).getParticipantesMax() + "\n\n";
             }
             return texto;
         } else return "";
+    }
+
+    public static String fecha(){//Si no esta cada cosa rodeado en eso lo marca como error aunque funciona bien
+        LocalDate currentDate = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            currentDate = LocalDate.now();
+        }
+        int year = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            year = currentDate.getYear();
+        }
+        int month = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            month = currentDate.getMonthValue();
+        }
+        int day = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            day = currentDate.getDayOfMonth();
+        }
+
+        return (day + "/" + month + "/" + year);
     }
 }

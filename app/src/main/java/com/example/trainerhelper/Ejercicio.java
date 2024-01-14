@@ -29,6 +29,27 @@ public class Ejercicio implements Serializable {
         return ("Deporte: " + this.deporte + "\nNombre: " + this.nombreEjercicio + "\nDescripcion: " + this.descripcion + "\nMateriales: " + this.materiales + "\nDuracion: " + this.duracion + "\nMinimo de participantes: " + this.participantesMin+ "\nMaximo de participantes: " + this.participantesMax);
     }
 
+    public int validar(){//0 = esta OK, 1 = falta algo de rellenar, 2 = problema con participantes, 3 = ejercicio repetido
+        //primero comprobamos que todos los apartados esten rellenos
+        if(nombreEjercicio.equals("") || descripcion.equals("") || materiales.equals("") || duracion == -1 || participantesMin == -1 || participantesMax == -1){
+            return 1;
+        }else if(participantesMin > participantesMax){
+            return 2;
+        }else if(existeEnLista()){
+            return 3;
+        }
+        return 0;
+    }
+
+    public boolean existeEnLista(){
+        for(int i = 0; i < AppData.LISTA_EJERCICIOS.size(); i++){
+            if(AppData.LISTA_EJERCICIOS.get(i).getNombreEjercicio().equals(nombreEjercicio) && AppData.LISTA_EJERCICIOS.get(i).getDeporte().equals(deporte)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Getters y setters para todos los atributos
     //getters
     public String getDeporte() {

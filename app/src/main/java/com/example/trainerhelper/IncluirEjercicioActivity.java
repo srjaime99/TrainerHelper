@@ -52,8 +52,6 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Lógica para manejar el clic en el botón "Aceptar"
                 crearObjetoDesdeEntradasUsuario();
-                Toast.makeText(IncluirEjercicioActivity.this, "Se ha creado el ejercicio", Toast.LENGTH_SHORT).show();
-                volverAMenu();
             }
         });
 
@@ -79,38 +77,56 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
         String descripcionEjercicio = descripcionEjercicioEditText.getText().toString();
         int duracion;
         if(duracionEditText.getText().toString().equals("")){
-            duracion = 0;
+            duracion = -1;
         }else{
             duracion = Integer.parseInt(duracionEditText.getText().toString());
         }
         int participantesMin;
         if(minParticipantesEditText.getText().toString().equals("")){
-            participantesMin = 0;
+            participantesMin = -1;
         }else{
             participantesMin = Integer.parseInt(minParticipantesEditText.getText().toString());
         }
         int participantesMax;
         if(maxParticipantesEditText.getText().toString().equals("")){
-            participantesMax = 0;
+            participantesMax = -1;
         }else{
             participantesMax = Integer.parseInt(maxParticipantesEditText.getText().toString());
         }
         String materiales = materialesEditText.getText().toString();
         String deporteSeleccionado = deporteSpinner.getSelectedItem().toString();
 
-        // Crear un nuevo objeto Ejercicio con los valores obtenidos
         ejercicio = new Ejercicio(deporteSeleccionado, nombreEjercicio, descripcionEjercicio, materiales, duracion, participantesMin, participantesMax);
 
-        if (ejercicio != null) {
-            if (AppData.LISTA_EJERCICIOS == null || AppData.LISTA_EJERCICIOS.size() < 1) {
-                AppData.LISTA_EJERCICIOS = new ArrayList<Ejercicio>();
-            }
-            AppData.LISTA_EJERCICIOS.add(ejercicio);
-            AppData.escribirEjercicios(this);
-        } else {
-            System.out.println("No se pudo añadir el ejercicio correctamente");
-        }
+        switch (ejercicio.validar()){
+            case 1:
+                Toast.makeText(IncluirEjercicioActivity.this, "Rellena todos los apartados", Toast.LENGTH_SHORT).show();
+                break;
 
-        //crear toast con confirmacion
+            case 2:
+                Toast.makeText(IncluirEjercicioActivity.this, "El numero de participantes es erroneo", Toast.LENGTH_SHORT).show();
+                break;
+
+            case 3:
+                Toast.makeText(IncluirEjercicioActivity.this, "Ejercicio repetido", Toast.LENGTH_SHORT).show();
+                break;
+
+            case 0:
+                if (ejercicio != null) {
+                    if (AppData.LISTA_EJERCICIOS == null || AppData.LISTA_EJERCICIOS.size() < 1) {
+                        AppData.LISTA_EJERCICIOS = new ArrayList<Ejercicio>();
+                    }
+                    AppData.LISTA_EJERCICIOS.add(ejercicio);
+                    AppData.escribirEjercicios(this);
+                    Toast.makeText(IncluirEjercicioActivity.this, "Se ha creado el ejercicio", Toast.LENGTH_SHORT).show();
+                    volverAMenu();
+                } else {
+                    System.out.println("No se pudo añadir el ejercicio correctamente");
+                }
+                break;
+
+            default:
+                System.out.println("Error en la validacion");
+        }
     }
 }

@@ -1,5 +1,8 @@
 package com.example.trainerhelper;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,19 +45,28 @@ public class CrearSesionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String deporteSeleccionado = deporteSpinner.getSelectedItem().toString();
-                int duracion;
+                int duracion = 0;
                 if(duracionEditText.getText().toString().equals("")){
-                    duracion = 0;
+                    Toast.makeText(CrearSesionActivity.this, "Introduzca una duracion", Toast.LENGTH_SHORT).show();
                 }else{
                     duracion = Integer.parseInt(duracionEditText.getText().toString());
+                    mostrarSesion(deporteSeleccionado, duracion);
+                    findViewById(R.id.btnCopiar).setVisibility(View.VISIBLE);
                 }
-                mostrarSesion(deporteSeleccionado, duracion);
+            }
+        });
+
+        findViewById(R.id.btnCopiar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("Sesion copiada", sesionCreadaTextView.getText());
+                clipboard.setPrimaryClip(clip);
             }
         });
     }
 
     private void mostrarSesion(String deporteSeleccionado, int duracion){
-        //sesionCreadaTextView.setText(ManejoEjercicios.listaEnTexto(ManejoEjercicios.crearSesion(ManejoEjercicios.leerJson(this), deporteSeleccionado, duracion)));
         sesionCreadaTextView.setText(ManejoEjercicios.listaEnTexto(ManejoEjercicios.crearSesionMejorado(AppData.LISTA_EJERCICIOS, deporteSeleccionado, duracion)));
     }
 
