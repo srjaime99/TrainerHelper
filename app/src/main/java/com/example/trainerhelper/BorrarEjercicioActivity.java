@@ -1,11 +1,13 @@
 package com.example.trainerhelper;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class BorrarEjercicioActivity extends AppCompatActivity {
@@ -31,8 +33,26 @@ public class BorrarEjercicioActivity extends AppCompatActivity {
         findViewById(R.id.botonBorrar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder builder;
+                builder = new AlertDialog.Builder(BorrarEjercicioActivity.this);
                 String nombreEjercicio = nombreEjercicioEditText.getText().toString();
-                borrarEjercicio(nombreEjercicio);
+                builder.setMessage("¿Quieres borrar el elemento "+ nombreEjercicio + " de la lista?");
+                builder.setTitle("Confirmación");
+                builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        borrarEjercicio(nombreEjercicio);
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
         });
     }
