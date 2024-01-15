@@ -38,6 +38,13 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MenuActivity.this, BorrarEjercicioActivity.class));
             }
         });
+
+        findViewById(R.id.btnAccederDev).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuActivity.this, ModoDesarrolladorActivity.class));
+            }
+        });
     }
 }
 

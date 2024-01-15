@@ -32,6 +32,8 @@
 
         <activity android:name=".BorrarEjercicioActivity"></activity>
 
+        <activity android:name=".ModoDesarrolladorActivity"></activity>
+
     </application>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>

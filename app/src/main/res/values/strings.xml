@@ -15,6 +15,10 @@
     <string name="borrar_actividad">Borrar actividad</string>
     <string name="borrar">Borrar</string>
     <string name="ver_actividades">Ver actividades</string>
+    <string name="acceder">Acceder</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="acceder_dev">Acceso desarrolladres</string>
     <string name="copyright">TrainerHelper - Developed by Jaime and Manuel © 2024</string>
     <string-array name="deportes">
         <item>Hockey</item>
