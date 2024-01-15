@@ -1,11 +1,14 @@
 package com.example.trainerhelper;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -19,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 public class ModoDesarrolladorActivity extends AppCompatActivity {
     @Override
@@ -27,6 +31,7 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modo_desarrollador);
 
         EditText contraseniaEditText = findViewById(R.id.contrasenia);
+        EditText importarEditText = findViewById(R.id.datosAimportar);
 
         Button btnVolver = findViewById(R.id.btnVolver);
         btnVolver.setOnClickListener(new View.OnClickListener() {
@@ -44,12 +49,59 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
                 probarContrasenia(contrasenia);
             }
         });
+
+        findViewById(R.id.btnCopiar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("Sesion copiada", AppData.enTexto());
+                clipboard.setPrimaryClip(clip);
+            }
+        });
+
+        findViewById(R.id.btnImportar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                importarEjercicios(importarEditText.getText().toString());
+            }
+        });
+    }
+
+    private void importarEjercicios(String stringEjercicios){
+        List<Ejercicio> listaEjercicios = ManejoEjercicios.stringToEjercicios(stringEjercicios);
+        int ejErroneos = 0, ejRepes = 0, ejAniadidos = 0;
+        for(int i = 0; i < listaEjercicios.size(); i++){
+            switch (listaEjercicios.get(i).validar()){
+                case 0:
+                    AppData.LISTA_EJERCICIOS.add(listaEjercicios.get(i));
+                    ejAniadidos++;
+                    break;
+                case 1:
+                    ejErroneos++;
+                    break;
+                case 2:
+                    ejErroneos++;
+                    break;
+                case 3:
+                    ejRepes++;
+                    break;
+            }
+        }
+        AppData.escribirEjercicios(this);
+        TextView resultadoImportarEditText = findViewById(R.id.resultadoImportar);
+        resultadoImportarEditText.setText("Ejercios que no se han podido importar: " + ejErroneos + "\nEjercicios repetidos: " + ejRepes + "\nEjercicios añadidos: " + ejAniadidos);
     }
 
     private void probarContrasenia(String contra){
         //guardarContrasenia(this, "Jamon");
         if(verifyPassword(contra)){
             Toast.makeText(ModoDesarrolladorActivity.this, "Contraseña aceptada", Toast.LENGTH_SHORT).show();
+            findViewById(R.id.btnAcceder).setVisibility(View.GONE);
+            findViewById(R.id.contrasenia).setVisibility(View.GONE);
+            findViewById(R.id.btnCopiar).setVisibility(View.VISIBLE);
+            findViewById(R.id.datosAimportar).setVisibility(View.VISIBLE);
+            findViewById(R.id.btnImportar).setVisibility(View.VISIBLE);
+            findViewById(R.id.resultadoImportar).setVisibility(View.VISIBLE);
         }else{
             Toast.makeText(ModoDesarrolladorActivity.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
         }

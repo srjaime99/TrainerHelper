@@ -62,4 +62,14 @@ public class AppData {
             System.out.println("No se ha podido escribir");
         }
     }
+
+    public static String enTexto(){
+        String texto = "";
+        if(LISTA_EJERCICIOS != null && LISTA_EJERCICIOS.size() != 0){
+            for(int i = 0; i < LISTA_EJERCICIOS.size(); i++){
+                texto = texto + LISTA_EJERCICIOS.get(i).enTextoExportar() + "\n";
+            }
+        }
+        return texto;
+    }
 }

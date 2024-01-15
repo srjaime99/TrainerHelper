@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@drawable/background">
 
     <RelativeLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="45dp">
 
@@ -25,10 +24,10 @@
             android:id="@+id/btnAcceder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/contrasenia"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="148dp"
-            android:layout_marginBottom="150dp"
             android:backgroundTint="@color/button"
             android:text="@string/acceder" />
 
@@ -48,5 +47,67 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnCopiar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnAcceder"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="130dp"
+            android:backgroundTint="@color/button"
+            android:text="@string/extraer_ejercicios"
+            android:visibility="gone" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/datosAimportar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnCopiar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="130dp"
+            android:ems="10"
+            android:hint="@string/ej_para_importar"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"  />
+
+        <Button
+            android:id="@+id/btnImportar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/datosAimportar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="130dp"
+            android:backgroundTint="@color/button"
+            android:text="@string/importar"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/resultadoImportar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnImportar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="130dp"
+            android:text="@string/nada"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"/>
     </RelativeLayout>
 </ScrollView>
