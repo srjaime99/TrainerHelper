@@ -10,17 +10,17 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="45dp">
 
+
     <Button
         android:id="@+id/btnVolver"
         android:layout_width="85dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/button"
         android:text="@string/atras"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/Material"
