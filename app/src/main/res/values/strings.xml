@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">TrainerHelper</string>
-    <string name="atras">atras</string>
+    <string name="atras">Atras</string>
     <string name="siguiente">Siguiente</string>
     <string name="incluir_actividad">Añadir actividad</string>
     <string name="ejercicio">Ejercicio</string>
@@ -20,6 +20,9 @@
     <string name="contrasenia">Contraseña</string>
     <string name="acceder_dev">Acceso desarrolladres</string>
     <string name="copyright">TrainerHelper - Developed by Jaime and Manuel © 2024</string>
+    <string name="extraer_ejercicios">Extraer ejercicios</string>
+    <string name="ej_para_importar">Ej para importar</string>
+    <string name="importar">Importar</string>
     <string-array name="deportes">
         <item>Hockey</item>
         <item>Patines</item>

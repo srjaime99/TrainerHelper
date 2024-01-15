@@ -29,6 +29,10 @@ public class Ejercicio implements Serializable {
         return ("Deporte: " + this.deporte + "\nNombre: " + this.nombreEjercicio + "\nDescripcion: " + this.descripcion + "\nMateriales: " + this.materiales + "\nDuracion: " + this.duracion + "\nMinimo de participantes: " + this.participantesMin+ "\nMaximo de participantes: " + this.participantesMax);
     }
 
+    public String enTextoExportar(){
+        return (this.deporte + " | " + this.nombreEjercicio + " | " + this.descripcion + " | " + this.materiales + " | " + this.duracion + " | " + this.participantesMin+ " | " + this.participantesMax);
+    }
+
     public int validar(){//0 = esta OK, 1 = falta algo de rellenar, 2 = problema con participantes, 3 = ejercicio repetido
         //primero comprobamos que todos los apartados esten rellenos
         if(nombreEjercicio.equals("") || descripcion.equals("") || materiales.equals("") || duracion == -1 || participantesMin == -1 || participantesMax == -1){
