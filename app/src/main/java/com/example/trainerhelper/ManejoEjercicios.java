@@ -9,14 +9,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class ManejoEjercicios {
-
-    public static boolean borrarEjercicio(String nombreEjercicio, Context context){
+    public static boolean borrarEjercicio(String nombreEjercicio, Context context, String deporte){
         if (AppData.LISTA_EJERCICIOS != null && AppData.LISTA_EJERCICIOS.size() > 0) {
             for(int i = 0; i < AppData.LISTA_EJERCICIOS.size(); i++){
                 if(AppData.LISTA_EJERCICIOS.get(i).getNombreEjercicio().equals(nombreEjercicio)){
-                    AppData.LISTA_EJERCICIOS.remove(i);
-                    AppData.escribirEjercicios(context);
-                    return true;
+                    if(AppData.LISTA_EJERCICIOS.get(i).getDeporte().equals(deporte)){
+                        AppData.LISTA_EJERCICIOS.remove(i);
+                        AppData.escribirEjercicios(context);
+                        return true;
+                    }
                 }
             }
         }
@@ -74,16 +75,6 @@ public class ManejoEjercicios {
         if (listaEjercicios != null && listaEjercicios.size() > 0) {
             for(int i = 0; i < listaEjercicios.size(); i++){
                 texto = texto + "\n" + listaEjercicios.get(i).getNombreEjercicio() + " | " + listaEjercicios.get(i).getDuracion() + "'";
-            }
-            return texto;
-        } else return "";
-    }
-
-    public static String listaEnTextoEntero (List<Ejercicio> listaEjercicios){
-        String texto = "";
-        if (listaEjercicios != null && listaEjercicios.size() > 0) {
-            for(int i = 0; i < listaEjercicios.size(); i++){
-                texto = texto + listaEjercicios.get(i).getNombreEjercicio() + " | " + listaEjercicios.get(i).getDuracion() + "' | " + listaEjercicios.get(i).getMateriales() + " | " + listaEjercicios.get(i).getParticipantesMin() + " | " + listaEjercicios.get(i).getParticipantesMax() + "\n\n";
             }
             return texto;
         } else return "";

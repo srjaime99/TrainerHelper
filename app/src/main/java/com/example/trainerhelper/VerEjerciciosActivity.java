@@ -33,7 +33,6 @@ public class VerEjerciciosActivity extends AppCompatActivity {
         btnAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lógica para volver al MenuActivity
                 finish();
             }
         });
@@ -77,7 +76,7 @@ public class VerEjerciciosActivity extends AppCompatActivity {
 
             // Crear botón para eliminar el ejercicio
             Button btnEliminar = new Button(this);
-            btnEliminar.setText("X");
+            btnEliminar.setText("Eliminar");
             btnEliminar.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
 
             // Configurar las reglas de alineación para centrar el botón en el RelativeLayout
@@ -103,14 +102,14 @@ public class VerEjerciciosActivity extends AppCompatActivity {
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    boolean exito = eliminarEjercicio(ejercicio.getNombreEjercicio());
+                                    boolean exito = eliminarEjercicio(ejercicio.getNombreEjercicio(), ejercicio.getDeporte());
                                     if (exito) {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
                                                 // Actualizar la vista después de eliminar el ejercicio
                                                 layoutEjercicios.removeView(ejercicioLayout);
-                                                Toast.makeText(VerEjerciciosActivity.this, "Ejercicio eliminado", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(VerEjerciciosActivity.this, R.string.ejercicio_eliminado, Toast.LENGTH_SHORT).show();
                                             }
                                         });
                                     } else {
@@ -138,10 +137,8 @@ public class VerEjerciciosActivity extends AppCompatActivity {
 
             // Crear la línea divisoria
             View lineaDivisoria = new View(this);
-            LinearLayout.LayoutParams paramsLineaDivisoria = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    2); // Altura de la línea en píxeles
-            lineaDivisoria.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
+            LinearLayout.LayoutParams paramsLineaDivisoria = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,2); // Altura de la línea en píxeles
+            lineaDivisoria.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
             lineaDivisoria.setLayoutParams(paramsLineaDivisoria);
 
             // Agregar TextView, Button y línea divisoria al RelativeLayout del ejercicio
@@ -154,7 +151,7 @@ public class VerEjerciciosActivity extends AppCompatActivity {
         }
     }
 
-    private boolean eliminarEjercicio(String nombre){
-        return ManejoEjercicios.borrarEjercicio(nombre, this);
+    private boolean eliminarEjercicio(String nombre, String deporte){
+        return ManejoEjercicios.borrarEjercicio(nombre, this, deporte);
     }
 }

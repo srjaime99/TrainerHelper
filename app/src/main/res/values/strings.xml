@@ -23,6 +23,7 @@
     <string name="extraer_ejercicios">Extraer ejercicios</string>
     <string name="ej_para_importar">Ej para importar</string>
     <string name="importar">Importar</string>
+    <string name="ejercicio_eliminado">Ejercicio eliminado</string>
     <string-array name="deportes">
         <item>Hockey</item>
         <item>Patines</item>

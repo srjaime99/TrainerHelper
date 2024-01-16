@@ -114,7 +114,7 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
     }
 
     private void probarContrasenia(String contra){
-        //guardarContrasenia(this, "Jamon");
+        guardarContrasenia(this, "Jamon");
         if(verifyPassword(contra)){
             Toast.makeText(ModoDesarrolladorActivity.this, "Contraseña aceptada", Toast.LENGTH_SHORT).show();
             findViewById(R.id.btnAcceder).setVisibility(View.GONE);
@@ -159,9 +159,13 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
         return contras;
     }
     public void guardarContrasenia(Context context, String contra) {
-        try {
-            contra = codificarContrasenia(contra);
+        contra = codificarContrasenia(contra);
+
+        guardarStringEnArchivo(this, contra, "password.txt");
+
+        /*try {
             String path = context.getFilesDir() + "/passwords.json";
+            Toast.makeText(ModoDesarrolladorActivity.this, path, Toast.LENGTH_LONG).show();
             File file = new File(path);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             fileOutputStream.write(contra.getBytes());
@@ -169,6 +173,67 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
             fileOutputStream.close();
         } catch (IOException e) {
             System.out.println("No se ha podido escribir");
+        }*/
+    }
+
+    public static String leerStringDesdeArchivo(Context context, String nombreArchivo) {
+        FileInputStream fis = null;
+        InputStreamReader isr = null;
+        BufferedReader br = null;
+
+        try {
+            // Abre el archivo para lectura
+            fis = context.openFileInput(nombreArchivo);
+            isr = new InputStreamReader(fis);
+            br = new BufferedReader(isr);
+
+            StringBuilder sb = new StringBuilder();
+            String linea;
+
+            // Lee el contenido del archivo línea por línea
+            while ((linea = br.readLine()) != null) {
+                sb.append(linea);
+            }
+
+            return sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+                if (isr != null) {
+                    isr.close();
+                }
+                if (fis != null) {
+                    fis.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void guardarStringEnArchivo(Context context, String contenido, String nombreArchivo) {
+        FileOutputStream fos = null;
+
+        try {
+            // Abre el archivo en modo privado
+            fos = context.openFileOutput(nombreArchivo, Context.MODE_PRIVATE);
+            // Escribe el contenido en el archivo
+            fos.write(contenido.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -198,6 +263,7 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
 
     public boolean verifyPassword(String prueba) {
         String inputHash = codificarContrasenia(prueba);
-        return inputHash != null && inputHash.equals(leerContrasenias(this));
+        //return inputHash != null && inputHash.equals(leerContrasenias(this));
+        return inputHash != null && inputHash.equals(leerStringDesdeArchivo(this, "password.txt"));
     }
 }
