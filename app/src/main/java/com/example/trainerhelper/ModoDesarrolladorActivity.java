@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -27,6 +28,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModoDesarrolladorActivity extends AppCompatActivity {
+
+    private static final String PREF_NAME = "developer_prefs";
+    private static final String KEY_PASSWORD = "developer_password";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +53,7 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String contrasenia = contraseniaEditText.getText().toString();
-                probarContrasenia(contrasenia);
+                probarContraseña(contrasenia);
             }
         });
 
@@ -113,131 +118,18 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
         resultadoImportarEditText.setText("Ejercios que no se han podido importar: " + ejErroneos + "\nEjercicios repetidos: " + ejRepes + "\nEjercicios añadidos: " + ejAniadidos);
     }
 
-    private void probarContrasenia(String contra){
-        guardarContrasenia(this, "Jamon");
-        if(verifyPassword(contra)){
-            Toast.makeText(ModoDesarrolladorActivity.this, "Contraseña aceptada", Toast.LENGTH_SHORT).show();
-            findViewById(R.id.btnAcceder).setVisibility(View.GONE);
-            findViewById(R.id.contrasenia).setVisibility(View.GONE);
-            findViewById(R.id.btnCopiar).setVisibility(View.VISIBLE);
-            findViewById(R.id.datosAimportar).setVisibility(View.VISIBLE);
-            findViewById(R.id.btnImportar).setVisibility(View.VISIBLE);
-            findViewById(R.id.resultadoImportar).setVisibility(View.VISIBLE);
-        }else{
-            Toast.makeText(ModoDesarrolladorActivity.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     private void volverAMenu() {
         finish();
     }
 
-    public String leerContrasenias(Context context) {
-        String contras = "";
-        StringBuilder stringBuilder = new StringBuilder();
-        try {
-            String yourFilePath = context.getFilesDir() + "/passwords.json";
-            File yourFile = new File(yourFilePath);
-            if (yourFile != null) {
-                InputStream inputStream = new FileInputStream(yourFile);
-                if (inputStream != null) {
-                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                    String receiveString = "";
-                    while ((receiveString = bufferedReader.readLine()) != null){
-                        stringBuilder.append(receiveString);
-                    }
-                    inputStream.close();
-                    contras = stringBuilder.toString();
-                }
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Archivo no encontrado");
-        } catch (IOException e) {
-            System.out.println("Excepcion");
-        }
-        return contras;
-    }
-    public void guardarContrasenia(Context context, String contra) {
-        contra = codificarContrasenia(contra);
-
-        guardarStringEnArchivo(this, contra, "password.txt");
-
-        /*try {
-            String path = context.getFilesDir() + "/passwords.json";
-            Toast.makeText(ModoDesarrolladorActivity.this, path, Toast.LENGTH_LONG).show();
-            File file = new File(path);
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            fileOutputStream.write(contra.getBytes());
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            System.out.println("No se ha podido escribir");
-        }*/
+    public void guardarContraseña(Context context, String contraseña) {
+        SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(KEY_PASSWORD, codificarContraseña(contraseña));
+        editor.apply();
     }
 
-    public static String leerStringDesdeArchivo(Context context, String nombreArchivo) {
-        FileInputStream fis = null;
-        InputStreamReader isr = null;
-        BufferedReader br = null;
-
-        try {
-            // Abre el archivo para lectura
-            fis = context.openFileInput(nombreArchivo);
-            isr = new InputStreamReader(fis);
-            br = new BufferedReader(isr);
-
-            StringBuilder sb = new StringBuilder();
-            String linea;
-
-            // Lee el contenido del archivo línea por línea
-            while ((linea = br.readLine()) != null) {
-                sb.append(linea);
-            }
-
-            return sb.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            try {
-                if (br != null) {
-                    br.close();
-                }
-                if (isr != null) {
-                    isr.close();
-                }
-                if (fis != null) {
-                    fis.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private void guardarStringEnArchivo(Context context, String contenido, String nombreArchivo) {
-        FileOutputStream fos = null;
-
-        try {
-            // Abre el archivo en modo privado
-            fos = context.openFileOutput(nombreArchivo, Context.MODE_PRIVATE);
-            // Escribe el contenido en el archivo
-            fos.write(contenido.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (fos != null) {
-                    fos.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public String codificarContrasenia(String contra) {
+    public String codificarContraseña(String contra) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] encodedHash = digest.digest(contra.getBytes());
@@ -261,9 +153,24 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
         return hexString.toString();
     }
 
-    public boolean verifyPassword(String prueba) {
-        String inputHash = codificarContrasenia(prueba);
-        //return inputHash != null && inputHash.equals(leerContrasenias(this));
-        return inputHash != null && inputHash.equals(leerStringDesdeArchivo(this, "password.txt"));
+    private void probarContraseña(String prueba){
+        //guardarContraseña(this, "Jamon");
+
+        String inputHash = codificarContraseña(prueba);
+        SharedPreferences prefs = this.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        String contra = prefs.getString(KEY_PASSWORD, "");
+        boolean resultado = inputHash != null && inputHash.equals(contra);
+
+        if(resultado){
+            Toast.makeText(ModoDesarrolladorActivity.this, "Contraseña aceptada", Toast.LENGTH_SHORT).show();
+            findViewById(R.id.btnAcceder).setVisibility(View.GONE);
+            findViewById(R.id.contrasenia).setVisibility(View.GONE);
+            findViewById(R.id.btnCopiar).setVisibility(View.VISIBLE);
+            findViewById(R.id.datosAimportar).setVisibility(View.VISIBLE);
+            findViewById(R.id.btnImportar).setVisibility(View.VISIBLE);
+            findViewById(R.id.resultadoImportar).setVisibility(View.VISIBLE);
+        }else{
+            Toast.makeText(ModoDesarrolladorActivity.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+        }
     }
 }
