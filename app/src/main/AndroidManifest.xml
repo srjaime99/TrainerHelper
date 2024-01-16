@@ -28,9 +28,7 @@
 
         <activity android:name=".CrearSesionActivity"></activity>
 
-        <activity android:name=".VerActividadesActivity"></activity>
-
-        <activity android:name=".BorrarEjercicioActivity"></activity>
+        <activity android:name=".VerEjerciciosActivity"></activity>
 
         <activity android:name=".ModoDesarrolladorActivity"></activity>
 

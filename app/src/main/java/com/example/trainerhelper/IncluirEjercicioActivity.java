@@ -65,8 +65,6 @@ public class IncluirEjercicioActivity extends AppCompatActivity {
     }
 
     private void volverAMenu() {
-        Intent intent = new Intent(this, MenuActivity.class);
-        startActivity(intent);
         finish();
     }
 

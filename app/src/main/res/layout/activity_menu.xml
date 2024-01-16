@@ -54,17 +54,6 @@
         app:layout_constraintTop_toBottomOf="@+id/btnAnadirActividad" />
 
     <Button
-        android:id="@+id/btnBorrarActividad"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/button"
-        android:text="@string/borrar_actividad"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCrearSesion" />
-
-    <Button
         android:id="@+id/btnAccederDev"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -73,7 +62,7 @@
         android:text="@string/acceder_dev"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBorrarActividad" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCrearSesion" />
 
     <TextView
         android:id="@+id/copyright"

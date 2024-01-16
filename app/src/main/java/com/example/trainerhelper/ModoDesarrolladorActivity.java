@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModoDesarrolladorActivity extends AppCompatActivity {
@@ -68,8 +70,27 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
     }
 
     private void importarEjercicios(String stringEjercicios){
-        List<Ejercicio> listaEjercicios = ManejoEjercicios.stringToEjercicios(stringEjercicios);
         int ejErroneos = 0, ejRepes = 0, ejAniadidos = 0;
+        List<Ejercicio> listaEjercicios = new ArrayList<>();
+
+        if(!stringEjercicios.equals("")) {
+            String[] lines = stringEjercicios.split("\n");
+            for (String line : lines) {
+                String[] campos = line.split("\\|");
+
+                if(campos.length == 7){
+                    if(TextUtils.isDigitsOnly(campos[4].trim()) && TextUtils.isDigitsOnly(campos[5].trim()) && TextUtils.isDigitsOnly(campos[6].trim())){
+                        Ejercicio ejercicio = new Ejercicio(campos[0].trim(), campos[1].trim(), campos[2].trim(), campos[3].trim(), Integer.parseInt(campos[4].trim()), Integer.parseInt(campos[5].trim()), Integer.parseInt(campos[6].trim()));
+                        listaEjercicios.add(ejercicio);
+                    }else{
+                        ejErroneos++;
+                    }
+                }else{
+                    ejErroneos++;
+                }
+            }
+        }
+
         for(int i = 0; i < listaEjercicios.size(); i++){
             switch (listaEjercicios.get(i).validar()){
                 case 0:
@@ -108,8 +129,6 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
     }
 
     private void volverAMenu() {
-        Intent intent = new Intent(this, MenuActivity.class);
-        startActivity(intent);
         finish();
     }
 

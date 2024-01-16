@@ -26,8 +26,9 @@
     <string-array name="deportes">
         <item>Hockey</item>
         <item>Patines</item>
-        <item>Natacion</item>
-        <item>Yoga</item>
+        <item>Natación</item>
+        <item>Voleybol</item>
+        <item>Padel</item>
         <item>Fútbol</item>
     </string-array>
 </resources>

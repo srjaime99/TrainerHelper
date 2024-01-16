@@ -10,18 +10,6 @@ import java.util.List;
 
 public class ManejoEjercicios {
 
-    public static List<Ejercicio> stringToEjercicios(String stringEjercicios){
-        String[] lines = stringEjercicios.split("\n");
-        List<Ejercicio> ejercicios = new ArrayList<>();
-        for (String line : lines) {
-            String[] campos = line.split("\\|");
-
-            Ejercicio ejercicio = new Ejercicio(campos[0].trim(), campos[1].trim(), campos[2].trim(), campos[3].trim(), Integer.parseInt(campos[4].trim()), Integer.parseInt(campos[5].trim()), Integer.parseInt(campos[6].trim()));
-
-            ejercicios.add(ejercicio);
-        }
-        return ejercicios;
-    }
     public static boolean borrarEjercicio(String nombreEjercicio, Context context){
         if (AppData.LISTA_EJERCICIOS != null && AppData.LISTA_EJERCICIOS.size() > 0) {
             for(int i = 0; i < AppData.LISTA_EJERCICIOS.size(); i++){
