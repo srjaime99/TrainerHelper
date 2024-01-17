@@ -24,6 +24,17 @@
     <string name="ej_para_importar">Ej para importar</string>
     <string name="importar">Importar</string>
     <string name="ejercicio_eliminado">Ejercicio eliminado</string>
+    <string name="error_archivo_no_encontrado">Archivo no encontrado</string>
+    <string name="error_excepcion">Excepcion</string>
+    <string name="error_no_se_ha_podido_escribir">No se ha podido escribir</string>
+    <string name="sesion_copiada">Sesion copiada</string>
+    <string name="introduzca_una_duracion">Introduzca una duracion</string>
+    <string name="error_en_la_validacion_del_ejercicio">Error en la validacion del ejercicio</string>
+    <string name="error_no_se_pudo_aniadir_el_ejercicio_correctamente">No se pudo añadir el ejercicio correctamente</string>
+    <string name="se_ha_creado_el_ejercicio">Se ha creado el ejercicio</string>
+    <string name="este_ejercicio_ya_exisite">Este ejercicio ya exisite</string>
+    <string name="el_numero_de_participantes_es_erroneo">El numero de participantes es erroneo</string>
+    <string name="rellena_todos_los_apartados">Rellena todos los apartados</string>
     <string-array name="deportes">
         <item>Hockey</item>
         <item>Patines</item>

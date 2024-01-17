@@ -1,8 +1,9 @@
 package com.example.trainerhelper;
 
-import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+//para trabajar con los ficheros
+import android.content.Context;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+//para conseguir el tipo de la lista a la hora de extraer los ejercicios
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.List;
 public class AppData {
     public static List<Ejercicio> LISTA_EJERCICIOS = new ArrayList<Ejercicio>();
 
+    //metodo usado para leer los ejercicios del json y guardarlos en LISTA_EJERCICIOS
     public static void leerEjercicios(Context context) {
         Gson gson = new Gson();
         String text = "";
@@ -42,12 +45,13 @@ public class AppData {
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Archivo no encontrado");
+            System.out.println(context.getString(R.string.error_archivo_no_encontrado));
         } catch (IOException e) {
-            System.out.println("Excepcion");
+            System.out.println(context.getString(R.string.error_excepcion));
         }
     }
 
+    //metodo usado para guardar LISTA_EJERCICIOS en ejercicios.json
     public static void escribirEjercicios(Context context) {
         try {
             Gson gson = new Gson();
@@ -59,10 +63,11 @@ public class AppData {
             fileOutputStream.flush();
             fileOutputStream.close();
         } catch (IOException e) {
-            System.out.println("No se ha podido escribir");
+            System.out.println(context.getString(R.string.error_no_se_ha_podido_escribir));
         }
     }
 
+    //metodo usado para transformar LISTA_EJERCICIOS en un string que luego se puede exportar
     public static String enTexto(){
         String texto = "";
         if(LISTA_EJERCICIOS != null && LISTA_EJERCICIOS.size() != 0){
@@ -72,6 +77,4 @@ public class AppData {
         }
         return texto;
     }
-
-
 }
