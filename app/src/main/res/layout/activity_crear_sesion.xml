@@ -1,11 +1,14 @@
 <!-- Diseño para la actividad de "Crear Sesión" -->
+<!-- Se define un ScrollView para poder hacer Scroll -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background">
-
+    <!-- Se define un relative layout, el cual
+     coge de referencia los distintos elementos
+     para situar nuevos elementos-->
     <RelativeLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -13,7 +16,7 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="45dp">
 
-        <!-- Contenido de la actividad aquí -->
+        <!-- botón para volver al menú principal -->
 
         <Button
             android:id="@+id/btnVolver"
@@ -21,7 +24,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/button"
             android:text="@string/atras" />
-
+        <!-- botón para crear la sesión -->
         <Button
             android:id="@+id/btnCrearSesion"
             android:layout_width="wrap_content"
@@ -29,7 +32,7 @@
             android:layout_alignParentEnd="true"
             android:backgroundTint="@color/button"
             android:text="@string/crear_sesion" />
-
+        <!-- Spinner para elegir el deporte del que crear la sesión -->
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
@@ -47,7 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.288" />
-
+        <!-- Input de la duración de la sesión -->
         <EditText
             android:id="@+id/seleccionarDuracion"
             android:layout_width="80dp"
@@ -60,7 +63,7 @@
             android:hint="@string/duracion"
             android:inputType="number"
             app:layout_constraintStart_toStartOf="parent" />
-
+        <!-- Aquí aparecerá la información correspondiente de la sesión cuando se presione el botón de crear sesión -->
         <TextView
             android:id="@+id/sesionCreada"
             android:layout_width="wrap_content"
@@ -77,7 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="0.479" />
-
+        <!-- Botón para copiar la sesión al portapapeles, solo aparece una vez creada la sesión -->
         <Button
             android:id="@+id/btnCopiar"
             android:layout_width="wrap_content"

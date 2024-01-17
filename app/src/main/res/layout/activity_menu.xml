@@ -1,14 +1,14 @@
-<!-- Diseño para la actividad del menú principal -->
+<!-- Diseño para la actividad del menú principal
+ Tiene un constraint layout para hacerlo responsivo-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutMenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:gravity="center"
     android:orientation="vertical">
-
+    <!-- Logo de la aplicación -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
@@ -18,19 +18,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher_round" />
-
+    <!-- Botón para ir a la actividad de añadir actividad -->
     <Button
         android:id="@+id/btnAnadirActividad"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-
         android:backgroundTint="@color/button"
         android:text="@string/incluir_actividad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
+    <!-- Botón para ir a la actividad de Crear sesión -->
     <Button
         android:id="@+id/btnCrearSesion"
         android:layout_width="200dp"
@@ -41,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnVerActividades" />
-
+    <!-- Botón para ir a la actividad de ver actividades -->
     <Button
         android:id="@+id/btnVerActividades"
         android:layout_width="200dp"
@@ -52,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAnadirActividad" />
-
+    <!-- Botón para ir a la actividad de acceso de desarrolladores -->
     <Button
         android:id="@+id/btnAccederDev"
         android:layout_width="200dp"
@@ -63,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCrearSesion" />
-
+    <!-- Texto con el "copyright" de la aplicación -->
     <TextView
         android:id="@+id/copyright"
         android:layout_width="match_parent"

@@ -1,25 +1,28 @@
-<!-- Diseño para la actividad de "Crear Sesión" -->
+<!-- Diseño para la actividad de modo desarrollador
+tiene un ScrollView para poder ver los ejercicios una vez
+se ha ingresado utilizando la contraseña-->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background">
-
+    <!-- RelativeLayout para que el diseño sea responsivo -->
     <RelativeLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="45dp">
-
+        <!-- botón de volver al menú -->
         <Button
             android:id="@+id/btnVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/button"
             android:text="@string/atras" />
-
+        <!-- botón para acceder al modo desarrollador -->
         <Button
             android:id="@+id/btnAcceder"
             android:layout_width="wrap_content"
@@ -30,7 +33,7 @@
             android:layout_marginEnd="148dp"
             android:backgroundTint="@color/button"
             android:text="@string/acceder" />
-
+        <!-- Input string para meter la contraseña -->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/contrasenia"
             android:layout_width="0dp"
@@ -47,7 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:inputType="textPassword" />
-
+        <!-- botón para copiar los ejercicios en el portapapeles -->
         <Button
             android:id="@+id/btnCopiar"
             android:layout_width="wrap_content"
@@ -61,7 +64,7 @@
             android:backgroundTint="@color/button"
             android:text="@string/extraer_ejercicios"
             android:visibility="gone" />
-
+        <!-- Input para meter los ejercicios a importar en la aplicación -->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/datosAimportar"
             android:layout_width="wrap_content"
@@ -76,7 +79,7 @@
             android:hint="@string/ej_para_importar"
             app:layout_constraintStart_toStartOf="parent"
             android:visibility="gone"  />
-
+        <!-- Botón para iniciar el proceso de importación -->
         <Button
             android:id="@+id/btnImportar"
             android:layout_width="wrap_content"
@@ -90,7 +93,7 @@
             android:backgroundTint="@color/button"
             android:text="@string/importar"
             android:visibility="gone" />
-
+        <!-- texto que muestra el resultado de importar los ejercicios -->
         <TextView
             android:id="@+id/resultadoImportar"
             android:layout_width="wrap_content"

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- layout linear vertical que abarca toda la vista para situar correctamente los elementos que cuelgan de ella -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     android:padding="16dp"
     android:background="@drawable/background"
     tools:context=".VerEjerciciosActivity">
-
+    <!-- layout linear horizontal que abarca los botones de volver al menú y de ver los ejercicios -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +31,7 @@
             android:backgroundTint="@color/button" />
 
     </LinearLayout>
-
+    <!-- Spinner para seleccionar el deporte del cual se quiere ver los ejercicios -->
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="300dp"
@@ -43,13 +44,13 @@
         android:entries="@array/deportes"
         android:prompt="@string/spinner_hint"
         android:spinnerMode="dropdown" />
-
+    <!-- ScrollView que permite arrastrar la pantalla para ver la totalidad de los ejercicios -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="30dp">
-
+        <!-- layout linear vertical para ver los ejercicios de forma limpia y ordenada -->
         <LinearLayout
             android:id="@+id/layoutEjercicios"
             android:layout_width="match_parent"

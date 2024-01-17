@@ -1,5 +1,8 @@
-<!-- Diseño para la actividad de "Añadir Actividad" -->
-    <!-- Contenido de la actividad aquí -->
+<!--
+Vista correspondiente de añadir actividad. Consta de un constraint layout, que sitúa los
+elementos de la vista en relación con otros elementos y los bordes de la pantalla, de tal forma
+que se adapta a diferentes pantallas y dispositivos.
+ -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,8 +12,7 @@
     android:background="@drawable/background"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="45dp">
-
-
+    <!-- Botón para volver al menú principal -->
     <Button
         android:id="@+id/btnVolver"
         android:layout_width="85dp"
@@ -21,7 +23,7 @@
         android:text="@string/atras"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <!-- EditText para introducir los materiales necesarios -->
     <EditText
         android:id="@+id/Material"
         android:layout_width="wrap_content"
@@ -35,8 +37,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/minimo_personas" />
-
-
+    <!-- Título de la pantalla -->
     <TextView
         android:id="@+id/incluir_ejercicio"
         android:layout_width="wrap_content"
@@ -50,7 +51,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <!-- Input del nombre del ejercicio -->
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/nombreEjercicio"
         android:layout_width="0dp"
@@ -64,7 +65,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <!-- Input dela descripción del ejercicio -->
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/descripcionEjercicio"
         android:layout_width="0dp"
@@ -77,7 +78,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombreEjercicio" />
-
+    <!--  Input de la duración del ejercicio -->
     <EditText
         android:id="@+id/duracion"
         android:layout_width="80dp"
@@ -92,7 +93,7 @@
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descripcionEjercicio" />
-
+    <!-- Input de los participantes mínimos del ejercicio -->
     <EditText
         android:id="@+id/minimo_personas"
         android:layout_width="80dp"
@@ -108,7 +109,7 @@
         app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintStart_toEndOf="@+id/duracion"
         app:layout_constraintTop_toBottomOf="@+id/descripcionEjercicio" />
-
+    <!-- Input del máximo de participantes del ejercicio -->
     <EditText
         android:id="@+id/maximo_personas"
         android:layout_width="80dp"
@@ -125,7 +126,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/minimo_personas"
         app:layout_constraintTop_toBottomOf="@+id/descripcionEjercicio" />
-
+    <!-- Spinner para elegir el ejercicio -->
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="0dp"
@@ -142,7 +143,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.288" />
-
+    <!-- botón para volver al menú una vez creado el ejercicio -->
     <Button
         android:id="@+id/botonSiguiente"
         android:layout_width="wrap_content"
