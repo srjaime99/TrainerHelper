@@ -35,6 +35,10 @@
     <string name="este_ejercicio_ya_exisite">Este ejercicio ya exisite</string>
     <string name="el_numero_de_participantes_es_erroneo">El numero de participantes es erroneo</string>
     <string name="rellena_todos_los_apartados">Rellena todos los apartados</string>
+    <string name="comprobacion_elimiar_ejercicio">"¿Estás seguro de que quieres eliminar el ejercicio "</string>
+    <string name="confirmacion">Confirmación</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
     <string-array name="deportes">
         <item>Hockey</item>
         <item>Patines</item>

@@ -64,15 +64,18 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
         });
     }
 
+    //Metodo usado para incorporar ejercicios desde una cadena de texto
     private void importarEjercicios(String stringEjercicios){
         int ejErroneos = 0, ejRepes = 0, ejAniadidos = 0;
         List<Ejercicio> listaEjercicios = new ArrayList<>();
 
         if(!stringEjercicios.equals("")) {
+            //Dividimos las lineas
             String[] lines = stringEjercicios.split("\n");
             for (String line : lines) {
+                //Dentro de cada linea dividimos por el simbolo |
                 String[] campos = line.split("\\|");
-
+                //Comprobamos que tenga el numero de campos adecuado y estos tengas los valores adecuados
                 if(campos.length == 7){
                     if(TextUtils.isDigitsOnly(campos[4].trim()) && TextUtils.isDigitsOnly(campos[5].trim()) && TextUtils.isDigitsOnly(campos[6].trim())){
                         Ejercicio ejercicio = new Ejercicio(campos[0].trim(), campos[1].trim(), campos[2].trim(), campos[3].trim(), Integer.parseInt(campos[4].trim()), Integer.parseInt(campos[5].trim()), Integer.parseInt(campos[6].trim()));
@@ -86,6 +89,7 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
             }
         }
 
+        //Añadimos a LISTA_EJERCICIOS los ejercicios de uno en uno y apuntamos los que no se pueden añadir y por que motivo
         for(int i = 0; i < listaEjercicios.size(); i++){
             switch (listaEjercicios.get(i).validar()){
                 case 0:
@@ -112,6 +116,7 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
         finish();
     }
 
+    //Metodo para guardar la contraseña usando Shared Preferences
     public void guardarContraseña(Context context, String contraseña) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -119,6 +124,7 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    //Metodo para codificar la contraseña y que no quede en texto plano, usando el algoritmo SHA-256
     public String codificarContraseña(String contra) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -131,6 +137,7 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
         }
     }
 
+    //usado para codificar la contraseña
     private String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder(2 * hash.length);
         for (byte b : hash) {
@@ -143,8 +150,9 @@ public class ModoDesarrolladorActivity extends AppCompatActivity {
         return hexString.toString();
     }
 
+    //Metodo para comprobar si la contraseña introducida es la correcta y si es asi mostrar las funciones y ocultar lo usado por la contraseña
     private void probarContraseña(String prueba){
-        guardarContraseña(this, "Jamon");
+        guardarContraseña(this, "Jamon");//Necesario por que no hemos sido capaces de guardar la contraseña, al tratar de utilizar la conrtaseña en otro dispositivo esta no se habia guardado
 
         String inputHash = codificarContraseña(prueba);
         SharedPreferences prefs = this.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);

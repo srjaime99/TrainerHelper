@@ -48,39 +48,25 @@ public class VerEjerciciosActivity extends AppCompatActivity {
 
     // Método para mostrar los ejercicios
     private void mostrarEjercicios(List<Ejercicio> listaEjercicios) {
-        // Obtener el LinearLayout que contendrá los ejercicios
+        // Obtener el LinearLayout que contendrá los ejercicios y limpiarle de lo que pudiera contener
         LinearLayout layoutEjercicios = findViewById(R.id.layoutEjercicios);
-
-        // Limpiar el layout antes de mostrar los ejercicios
         layoutEjercicios.removeAllViews();
 
-        // Iterar sobre la lista de ejercicios y crear elementos para cada uno
+        // Iterar sobre la lista de ejercicios y crear elementos para cada ejercicio
         for (Ejercicio ejercicio : listaEjercicios) {
-            // Crear un RelativeLayout para cada ejercicio
             RelativeLayout ejercicioLayout = new RelativeLayout(this);
-            ejercicioLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            ));
+            ejercicioLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-            // Crear TextView para la información del ejercicio
+            // Crear TextView con la información del ejercicio
             TextView ejercicioInfo = new TextView(this);
             ejercicioInfo.setText(ejercicio.enTextoMostrar());
-            ejercicioInfo.setLayoutParams(new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT
-            ));
+            ejercicioInfo.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
 
             // Crear botón para eliminar el ejercicio
             Button btnEliminar = new Button(this);
             btnEliminar.setText("Eliminar");
             btnEliminar.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-
-            // Configurar las reglas de alineación para centrar el botón en el RelativeLayout
-            RelativeLayout.LayoutParams paramsBtnEliminar = new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT
-            );
+            RelativeLayout.LayoutParams paramsBtnEliminar = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             paramsBtnEliminar.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
             paramsBtnEliminar.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
             btnEliminar.setLayoutParams(paramsBtnEliminar);
@@ -88,14 +74,15 @@ public class VerEjerciciosActivity extends AppCompatActivity {
             btnEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //Aqui se define el funcionamiento de la comprobacion de eliminar
                     AlertDialog.Builder builder;
                     builder = new AlertDialog.Builder(VerEjerciciosActivity.this);
-                    builder.setMessage("¿Estás seguro de que quieres eliminar el ejercicio " + ejercicio.getNombreEjercicio() + " de la lista?");
-                    builder.setTitle("Confirmación");
-                    builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    builder.setMessage(getString(R.string.comprobacion_elimiar_ejercicio) + ejercicio.getNombreEjercicio() + " de la lista?");
+                    builder.setTitle(R.string.confirmacion);
+                    builder.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            // Lógica para eliminar el ejercicio
+                            //Creamos un nuevo thread por que no se actualizaban bien las vistas del resto de ejercicios
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -104,7 +91,7 @@ public class VerEjerciciosActivity extends AppCompatActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                // Actualizar la vista después de eliminar el ejercicio
+                                                //Actualizar la lista de ejercicios después de eliminar el ejercicio
                                                 layoutEjercicios.removeView(ejercicioLayout);
                                                 Toast.makeText(VerEjerciciosActivity.this, R.string.ejercicio_eliminado, Toast.LENGTH_SHORT).show();
                                             }
@@ -121,7 +108,7 @@ public class VerEjerciciosActivity extends AppCompatActivity {
                             }).start();
                         }
                     });
-                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
@@ -132,22 +119,23 @@ public class VerEjerciciosActivity extends AppCompatActivity {
                 }
             });
 
-            // Crear la línea divisoria
+            //Crear la línea entre ejercicios por que sino no se ditingue un ejercicio de otro
             View lineaDivisoria = new View(this);
             LinearLayout.LayoutParams paramsLineaDivisoria = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,2); // Altura de la línea en píxeles
             lineaDivisoria.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
             lineaDivisoria.setLayoutParams(paramsLineaDivisoria);
 
-            // Agregar TextView, Button y línea divisoria al RelativeLayout del ejercicio
+            //Agregar TextView, Button y línea divisoria al RelativeLayout del ejercicio
             ejercicioLayout.addView(ejercicioInfo);
             ejercicioLayout.addView(btnEliminar);
             ejercicioLayout.addView(lineaDivisoria);
 
-            // Agregar el RelativeLayout del ejercicio al layout principal
+            //Agregar el RelativeLayout del ejercicio al layout principal
             layoutEjercicios.addView(ejercicioLayout);
         }
     }
 
+    //Metodo necesario para el correcto funcionamiento del contexto
     private boolean eliminarEjercicio(String nombre, String deporte){
         return ManejoEjercicios.borrarEjercicio(nombre, this, deporte);
     }
