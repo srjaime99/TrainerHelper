@@ -20,15 +20,14 @@ public class CrearSesionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_sesion);
-
+        //manejo del spinner
         Spinner deporteSpinner = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.deportes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         deporteSpinner.setAdapter(adapter);
-
+        //asociacion de variables
         sesionCreadaTextView = findViewById(R.id.sesionCreada);
         duracionEditText = findViewById(R.id.seleccionarDuracion);
-
         findViewById(R.id.btnVolver).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

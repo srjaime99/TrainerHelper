@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         AppData.leerEjercicios(this);
         //Iniciamos el menu
         startActivity(new Intent(this, MenuActivity.class));
+        //finalizamos la app
         finish();
     }
 }
